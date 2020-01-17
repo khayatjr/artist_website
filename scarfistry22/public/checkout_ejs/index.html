@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Checkout</title>
+
+    <!-- Required meta tags always come first -->
+ 
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="dist/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="css/main.min.css">
+    <link rel="shortcut icon" href="logo1.png" type="image/x-icon" />
+
+
+
+   
+</head>
+
+<body>
+    <!-- <div class="loader"></div> -->
+ 
+    <header id="header">
+        <nav class="navbar navbar-expand-md navbar-light bg-light border-bottom">
+            <div class="container">
+                <a class="navbar-brand" href="D:\downloads\scarfistry22\scarfistry\home.html" id="header-logo">
+                    <img src="logo1.png" class="img-fluid" width="100"
+                        alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto text-center">
+                       <!--  <li class="nav-item active">
+                            <a class="nav-link text-dark" href="#">Home
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="D:\downloads\scarfistry22\scarfistry\gallery.html">Gallery</a>
+                        </li>
+
+                        <!-- <li class="nav-item">
+                            <a class="nav-link text-dark" href="D:\downloads\scarfistry22\quick-add-to-cart-master\quick-add-to-cart-master\index.html">Shop</a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="D:\downloads\scarfistry22\quick-add-to-cart-master\quick-add-to-cart-master\index.html""><i class="fas fa-shopping-cart"></i></a>
+                        </li>
+                        <li class="nav-item mr-md-3">
+                            <a class="nav-link text-dark" href="#"><i class="fab fa-instagram"></i></a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main id="main" role="main">
+       
+        <section id="checkout-container" style="background-color: white;">
+            <div class="container">
+                <div class="row py-5">
+                    <div class="col-md-4 order-md-2 mb-4">
+                        <h4 class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="text-muted">Your cart</span>
+                            <!-- <span class="badge badge-secondary badge-pill">3</span> -->
+                        </h4>
+                        <ul class="list-group mb-3">
+                         <!--    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                <div>
+                                    <h6 class="my-0">EL Muled</h6>
+                                    <small class="text-muted">Brief description</small>
+                                </div>
+                                <span class="text-muted"> 280 EGP</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                <div>
+                                    <h6 class="my-0">Second product</h6>
+                                    <small class="text-muted">Brief description</small>
+                                </div>
+                                <span class="text-muted">$8</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                <div>
+                                    <h6 class="my-0">Third item</h6>
+                                    <small class="text-muted">Brief description</small>
+                                </div>
+                                <span class="text-muted">$5</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between bg-light">
+                                <div class="text-success">
+                                    <h6 class="my-0">Promo code</h6>
+                                    <small>EXAMPLECODE</small>
+                                </div>
+                                <span class="text-success">-$5</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Total (USD)</span>
+                                <strong>$20</strong>
+                            </li> -->
+                        </ul>
+                        <!-- <form class="card p-2">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Promo code">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-secondary">Redeem</button>
+                                </div>
+                            </div>
+                        </form> -->
+                     
+                    </div>
+                    <div class="col-md-8 order-md-1">
+                        <h4 class="mb-3">Checkout</h4>
+                        <form class="needs-validation" novalidate>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="firstName">Full name</label>
+                                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                                    <div class="invalid-feedback">
+                                        Valid name is required.
+                                    </div>
+                                </div>
+                               
+                            </div>
+
+                         
+
+                            <div class="mb-3">
+                                <label for="email">Email
+                                    
+                                </label>
+                                <input type="email" class="form-control" id="email" placeholder="you@example.com" value="" required>
+                                <div class="invalid-feedback">
+                                    Please enter a valid email address for shipping updates.
+                                </div>
+                            </div>
+
+                             <div class="mb-3">
+                                <label for="phone">Phone
+                                    
+                                </label>
+                                <input type="number" class="form-control"   value="" required>
+                                <div class="invalid-feedback">
+                                    Please enter your phone number.
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="address">Address</label>
+                                <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+                                <div class="invalid-feedback">
+                                    Please enter your shipping address.
+                                </div>
+                            </div>
+
+                         
+
+                            <div class="row">
+                               
+                                <div class="col-md-4 mb-3">
+                                    <label for="state">Region</label>
+                                    <select class="custom-select d-block w-100" id="state" required>
+                                        <option value="">Choose...</option>
+                                        <option>Nasrcity</option>
+                                         <option>Helioplies</option>
+                                          <option>Tagamo3</option>
+                                           <option>Madinaty</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Please choose a region.
+                                    </div>
+                                </div>
+                               
+                            </div>
+                            <hr class="mb-4">
+                          
+                            
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="save-info">
+                                <label class="custom-control-label" for="save-info">Save this information for next time</label>
+                            </div>
+                            <hr class="mb-4">
+                           
+                           
+                            <hr class="mb-4">
+                            <button class="btn btn-primary btn-lg btn-block" type="submit">
+                                 Order </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+       
+       <!--  <a href="#" class="btn btn-primary scrollUp">
+            <i class="fa fa-arrow-circle-o-up"></i>
+        </a> -->
+    </main>
+    <!-- Footer -->
+    <!--  -->
+    <!-- jQuery first, then Bootstrap JS. -->
+    <script src="dist/jquery/jquery.min.js"></script>
+    <script src="dist/popper/popper.min.js" integrity=""></script>
+    <script src="dist/bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/main.min.js"></script>
+</body>
+
+</html>

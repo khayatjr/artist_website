@@ -1,0 +1,75 @@
+.cd-slider-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+.cd-slider-wrapper li {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  /* by default, move the product image to the right*/
+  transform: translateX(100%);
+  transition: transform 0.3s 0s, visibility 0s 0.3s;
+}
+.cd-slider-wrapper li.selected {
+  /* this is the visible product image */
+  position: relative;
+  visibility: visible;
+  z-index: 1;
+  transform: translateX(0);
+  transition: transform 0.3s 0s, visibility 0s 0s;
+}
+.cd-slider-wrapper li.move-left {
+  /* move the product image to the left */
+  transform: translateX(-100%);
+}
+
+
+.cd-customization {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.no-touch .cd-single-item:hover .cd-customization {
+  /* product customization visible */
+  pointer-events: auto;
+  visibility: visible;
+  opacity: 1;
+}
+
+.cd-customization .color, .cd-customization .size {
+  height: 34px;
+  position: relative;
+  overflow: hidden;
+}
+.cd-customization .color ul, .cd-customization .size ul {
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 100%;
+}
+.cd-customization .color.is-open, .cd-customization .size.is-open {
+  /* color/size list open - make ul element visible */
+  overflow: visible;
+}
+
+
+.cd-customization .color.selected-3 ul li:first-of-type, 
+.cd-customization .size.selected-3 ul li:first-of-type {
+  /* third option selected in the ul.color/ul.size list */
+  transform: translateY(0);
+}
+.cd-customization .color.selected-3 ul li:nth-of-type(2), 
+.cd-customization .size.selected-3 ul li:nth-of-type(2) {
+  transform: translateY(100%);
+}
+.cd-customization .color.selected-3 ul li:nth-of-type(3), 
+.cd-customization .size.selected-3 ul li:nth-of-type(3) {
+  transform: translateY(-100%);
+}
