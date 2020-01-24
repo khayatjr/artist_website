@@ -1,3 +1,15 @@
+html{
+
+  overflow-x: hidden;
+}
+#checkform{
+
+position: relative;
+margin-left: -7%;
+
+}
+
+
 .topnav{
 	
 	overflow: hidden;
@@ -46,11 +58,20 @@
 .nav .icon {
   display: none;
 }
+.success {
+  color: lightseagreen;
+  margin-left: 8%;
+  margin-bottom: 1em;
+}
 .space{
     right: -15%;
     position: absolute;
   }
 @media screen and (max-width: 1200px) {
+  #checkform{
+    position: relative;
+    margin-left: 0%;
+  }
 
   .space{
     right: 10%;

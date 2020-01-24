@@ -29,7 +29,7 @@
 	<title>T-Shirts</title>
 </head>
 	
-<body onload="myFunction2()">
+<body onload="myFunction2()" >
 	<!-- rgba(0, 0, 0, 0.08) -->
 	<!-- #ede2e1 -->
 	<!-- #e3d9d8 -->
@@ -51,7 +51,7 @@
 
 </div>
 
-<a href="contact.html" style="color: white;">CONTACT</a>
+<a href="/contact" style="color: white;">CONTACT</a>
   
    <a href="#" class="icon" onclick="myFunction()">
     <i class="fa fa-bars"></i>
@@ -106,7 +106,11 @@
             	
             	 <a href="/check" class="cd-cart">
 
-		<span> <%= totalQty %> </span>
+		 <% if(totalQty>0){%>
+
+				<span><%= totalQty %></span>
+
+            	<%}%>
 		
 	</a>
             
@@ -183,9 +187,9 @@
 					
         <select class="size" name="example"  required>
               <option value="">Select size</option>
-              <option class="medium" value="S">Small</option>
-              <option class="medium" value="M">Meduim</option>
-              <option class="medium" value="L">Large</option>
+              <option class="medium" value="Small">Small</option>
+              <option class="medium" value="Meduim">Meduim</option>
+              <option class="medium" value="Large">Large</option>
         </select>
 				
 

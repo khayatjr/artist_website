@@ -4,7 +4,7 @@
 
 <head>
     <title>Checkout</title>
-
+    <script src="https://kit.fontawesome.com/05853edf68.js" crossorigin="anonymous"></script>
     <!-- Required meta tags always come first -->
  
     <!--Font Awesome-->
@@ -87,7 +87,7 @@
 
 </div>
 
-<a href="contact.html" style="color: white">CONTACT</a>
+<a href="/contact" style="color: white">CONTACT</a>
   
    <a href="#" class="icon" onclick="myFunction()">
     <i class="fa fa-bars"></i>
@@ -166,10 +166,15 @@
     
    <h1 style="font-size: 40px;text-align: center;background-color:RGB(125,204,173); ">Checkout </h1>
   
-    <main id="main" role="main" >
-       
+  
+    <main id="main" role="main"  >
+        <%if (messages.success){%>
+   <div class="success">
+       <%=messages.success%>
+   </div>
+   <%}%>
 
-        <section id="checkout-container" style="background-color: white;">
+        <section id="checkout-container" style="background-color: white; ">
             <div class="container">
                 <div class="row py-5">
                     <div class="col-md-4 order-md-2 mb-4 space" >  
@@ -182,28 +187,40 @@
                                  <% if(bag){%>
                                  <% var len = bag.length %>
                                 
-                        <ul class="list-group mb-3">
+                        <ul class="list-group mb-3" style="margin-left: 10%;">
                             <% for(var i=0 ;i< len ;i++){%>
                             <li class="list-group-item d-flex justify-content-between lh-condensed">
                                 <div>
                                     <h6 class="my-0"><%=bag[i].item.name%></h6>
+                                    <!-- <i class="fas fa-minus"></i> -->
                                    <span class="badge badge-secondary badge-pill" style="background-color: RGB(125,204,173);"><%=bag[i].qty%></span>
-                                     <%= console.log(bag[i].qty); %>
+                                  <!--  <i class="fas fa-plus "></i> -->
+                                     <span class="text-muted"> <%=bag[i].size %></span>
                                 </div>
-                                <img src= "<%= bag[i].item.imagepath%>" style="width: 15%; height: 15%;" >
-                                <span class="text-muted"> <%=bag[i].item.price %></span>
+                                <img src= "<%= bag[i].item.imagepath%>" style="width: 15%; height: 15%; margin-left: 2%;" >
+                                <div style="margin-top: 25px; right: 15%;position: absolute;"> <button onclick="window.location.href='/remove/<%=bag[i].item.name+bag[i].size%>'" style="border: none; background-color: white;"> 
+                                    <i class="far fa-trash-alt"  aria-hidden="true"></i>
+                                </button></div>
+
+                                <strong> <%=bag[i].price %> EGP</strong>
+                                    
+                                
+                                
                             </li>
                            <% } %>
                            <li class="list-group-item d-flex justify-content-between">
                                 <span>Total </span>
                                 <strong><%=price%> EGP</strong>
+
+
                             </li> 
+
                         </ul>
 
                         <% } %> 
 
                         <% if(!bag){%>
-                         <ul class="list-group mb-3">
+                         <ul class="list-group mb-3" style="margin-left: 10%;">
                             
                             <li class="list-group-item d-flex justify-content-between lh-condensed">
                                 <div>
@@ -228,15 +245,14 @@
                         </form> -->
                      
                     </div>
-                    <div class="col-md-8 order-md-1" style="margin-left: -7%;
-                    position: relative;"  >  
+                    <div class="col-md-8 order-md-1"  id="checkform" >  
                         <!-- style="margin-left: -7%;" -->
                         <!-- <h4 class="mb-3">Checkout</h4> -->
-                        <form class="needs-validation" novalidate>
+                        <form class="needs-validation" novalidate action="/order" method="post">
                             <div class="mb-3">
                                 <!-- <div class="col-md-6 mb-3"> -->
                                     <label for="firstName">Full name</label>
-                                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required name="name">
                                     <div class="invalid-feedback">
                                         Valid name is required.
                                     </div>
@@ -250,7 +266,7 @@
                                 <label for="email">Email
                                     
                                 </label>
-                                <input type="email" class="form-control" id="email"  value="" required>
+                                <input type="email" class="form-control" id="email"  value="" required name="email">
                                 <div class="invalid-feedback">
                                     Please enter a valid email address for shipping updates.
                                 </div>
@@ -260,14 +276,14 @@
                                 <label for="phone">Phone
                                     
                                 </label>
-                                <input type="number" class="form-control"   value="" required>
+                                <input type="number" class="form-control"   value="" required name="phone">
                                 <div class="invalid-feedback">
                                     Please enter your phone number.
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="address">Address</label>
-                                <input type="text" class="form-control" id="address"  required>
+                                <input type="text" class="form-control" id="address"  required name="address">
                                 <div class="invalid-feedback">
                                     Please enter your shipping address.
                                 </div>
@@ -279,7 +295,7 @@
                                
                                 <div class="col-md-4 mb-3">
                                     <label for="state">Region</label>
-                                    <select class="custom-select d-block w-100" id="state" required>
+                                    <select class="custom-select d-block w-100" id="state" required name="region">
                                         <option value="">Choose...</option>
                                         <option>Nasrcity</option>
                                          <option>Helioplies</option>

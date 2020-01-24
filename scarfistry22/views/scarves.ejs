@@ -52,7 +52,7 @@
 
 </div>
 
-<a href="contact.html" style="color: white">CONTACT</a>
+<a href="/contact" style="color: white">CONTACT</a>
   
    <a href="#" class="icon" onclick="myFunction()">
     <i class="fa fa-bars"></i>
@@ -107,9 +107,13 @@
             	
             	 <a href="/check" class="cd-cart">
 
-            	 	
+            	 <% if(totalQty>0){%>
 
-		<span><%= totalQty %></span>
+				<span><%= totalQty %></span>
+
+            	<%}%>
+
+		
 		
 	</a>
             

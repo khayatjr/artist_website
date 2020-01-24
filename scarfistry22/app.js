@@ -9,7 +9,10 @@ var mongostore= require("connect-mongo")(session);
 const { check, validationResult } = require('express-validator/check');
 var flash = require('connect-flash');
 var app= express();
+var nodemailer = require('nodemailer');
 var cart;
+var arr=[];
+var Order=require("./order")
 app.use(flash());
 app.use(express.static("public"));
 //app.use(express.static("/public"));
@@ -39,6 +42,17 @@ mongoose.connect('mongodb://localhost:27017/scarfistry',{
 // }
 // });
 var len=0;
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+    secure: false,
+    requireTLS: true,
+  auth: {
+    user: 'khayatove@gmail.com',
+    pass: 'Maradona10'
+  }
+});
+
+
 
 app.use(bodyparser.urlencoded({extended: true}));
 app.use(session({secret:"secret",
@@ -51,6 +65,37 @@ app.use(function(req,res,next){
 	res.locals.session=req.session;
 	next();
 });
+app.use(function(req, res, next){
+  res.locals.messages = req.flash();
+  next();
+});
+app.post("/mail", function (req, res) {
+
+	var mailOptions = {
+  from:  'khayatove@yahoo.com',
+  to: 'khayatove@yahoo.com',
+  subject: 'contact page',
+  
+  text: req.body.mssg +"\n"+"\n"+
+  "From:"+" "+req.body.name +"\n"+"\n"+
+   
+  "Phone:"+" "+req.body.phone +"\n"+ "\n"+
+  "Email:"+" "+req.body.email 
+  
+  
+};
+transporter.sendMail(mailOptions, function(error, info){
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
+    req.flash('success','Thank your message is sent successfully ');
+  }
+  
+  res.redirect("/contact");
+});
+});
+
 app.get("/",function(req,res){
 	if(!req.session.cart){
 			totalQty=0;
@@ -66,6 +111,17 @@ app.get("/",function(req,res){
 
 	
 	
+});
+app.get("/remove/:id",function(req,res,next){
+
+var productId=req.params.id;
+console.log(productId);
+cart=new Cart(req.session.cart? req.session.cart:{});
+cart.removeItem(productId);
+req.session.cart=cart;
+res.redirect("/check");
+ // res.render("checkout.ejs",{bag:cart.generateArray(),price:cart.totalPrice,size:arr});
+
 });
 
 	app.get("/tshirts",function(req,res){
@@ -101,6 +157,7 @@ app.get("/",function(req,res){
 	var size;
 app.post("/size/:id", function (req, res) {
 	size=req.body.example;
+	arr.push(size);
 	console.log(size);
 
    var productId=req.params.id;
@@ -110,7 +167,7 @@ app.post("/size/:id", function (req, res) {
 		if(err){
 			return res.redirect("/check");
 		}
-		cart.add(product,product.name + size);
+		cart.add(product,product.name + size,size);
 		req.session.cart=cart;
 		console.log(req.session.cart.totalQty);
 		console.log(product.name);
@@ -127,16 +184,22 @@ app.post("/size/:id", function (req, res) {
 
 
 app.get("/check",function(req,res,next){
-	if(!req.session.cart){
+	if(!req.session.cart || req.session.cart.totalPrice==0){
 		return res.render("checkout.ejs",{bag:null});
 	}
 	var bag= req.session.cart;
-	  res.render("checkout.ejs",{bag:cart.generateArray(),price:cart.totalPrice});
+
+	  res.render("checkout.ejs",{bag:cart.generateArray(),price:cart.totalPrice,size:arr});
 
 	
 });
 app.get("/home",function(req,res){
 	res.render("new_home.ejs");
+	
+});
+
+app.get("/contact",function(req,res){
+	res.render("contact.ejs");
 	
 });
 
@@ -151,7 +214,13 @@ app.get("/add/:id",function(req,res){
 		if(err){
 			return res.redirect("/check");
 		}
-		cart.add(product,product.name + size);
+		cart.add(product,product.name+size);
+		
+	
+	
+
+	
+
 		req.session.cart=cart;
 		console.log(req.session.cart.totalQty);
 		console.log(product.name);
@@ -166,6 +235,51 @@ app.get("/add/:id",function(req,res){
 	
 });
 
+app.post("/order",function(req,res,next){
+	var order=new Order({
+		customer:req.body.name,
+		order:cart,
+		phone:req.body.phone,
+		email:req.body.email,
+		address:req.body.address,
+		region:req.body.region,
+		status:"pending"
+
+	});
+	order.save(function(err,result){
+	req.flash('success','order placed successfully, you will be contacted soon ');
+		var mailOptions = {
+  from:  'khayatove@yahoo.com',
+  to: 'khayatove@yahoo.com',
+  subject: 'New order',
+  
+  text: "check the new order" +"\n"+"\n"+
+  "From:"+" "+req.body.name +"\n"+"\n"+
+   
+  "Phone:"+" "+req.body.phone +"\n"+ "\n"+
+  "Email:"+" "+req.body.email 
+  
+  
+};
+transporter.sendMail(mailOptions, function(error, info){
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
+    
+  }
+  
+  
+});
+
+	req.session.cart=null;
+	cart=null;
+	res.redirect("/check");
+
+	});
+	
+
+});
 app.get("/addscarf/:id",function(req,res){
 
 
@@ -176,7 +290,7 @@ app.get("/addscarf/:id",function(req,res){
 		if(err){
 			 return res.redirect("/check");
 		}
-		cart.add(product,product.id);
+		cart.add(product,product.name+"","");
 		req.session.cart=cart;
 		console.log(req.session.cart.totalQty);
 		console.log(product.name);
