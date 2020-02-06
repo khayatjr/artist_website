@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
 }
-html {
+/*html {
     background-color: #eefbf8;
     background-image: radial-gradient(circle, hsla(0,0%,100%,.1), hsla(0,0%,0%,.75)),
                       linear-gradient(left, transparent 50%, hsla(0,0%,0%,.01) 50%);
@@ -11,10 +11,11 @@ html {
     background-size: 150% 150%, 3em 3em;
     font-size: 100%;
     min-height: 100%;
-}
+}*/
   /**********/
  /* Slider */
 /**********/
+
 
 .slider {
     background-color: #fff;
@@ -203,7 +204,7 @@ html {
 .item-1 {
     z-index: 2;
     opacity: 1;
-  background:url('https://static.pexels.com/photos/6526/sea-beach-holiday-vacation-large.jpg');
+  background:url('/moral.png');
   background-size:cover;
   }
 .item-2{

@@ -62,12 +62,26 @@
   display: none;
 }
 @media screen and (max-width: 1200px) {
+   html {
+  
+  background-image: url("/background2.jpg");
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size:cover;
+  /*overflow: hidden;*/
+}
+
   .bio{
 
     font-size: 0.75em;
     width:70%;
     margin-left: 12.5%;
-    margin-top: 2.5%;
+    margin-top: 5.5%;
     /*position: relative;*/
     /*display: none;*/
     /* The width is 100%, when the viewport is 800px or smaller */
@@ -77,7 +91,7 @@
   	
   	width:50%;
   	margin-left: 22%;
-    margin-top: 20%;
+    margin-top: 15%;
   }
    .nav a {
    	display: none;

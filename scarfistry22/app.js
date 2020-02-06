@@ -2,6 +2,7 @@ var express= require ("express");
 var mongoose= require ("mongoose");
 var Product= require("./products");
 var Scarves= require("./scarves");
+var Painting= require("./paintings");
 var Cart= require("./cart");
 var exphbs  = require('express-handlebars');
 var session=require("express-session");
@@ -84,12 +85,59 @@ app.post("/mail", function (req, res) {
   
   
 };
+// 1. Set up your server to make calls to PayPal
+// Add your client ID and secret
+//     var PAYPAL_CLIENT = 'AWNpqdTIYEeLLEqj0GBzp1TvGwONMmOH0TYIs7B7qYZV78AFHgCKew3j8EHWv5ysKJ83tkz9QXh9JGla';
+//     var PAYPAL_SECRET = 'EMME0oPHpFrC13vZ7e_4KovRriM13C3WMojwYJFX2OSCpzXMI_CB35IlUxVKklBHVBLjTUQ0IlMl1q3Y';
+
+//   // Point your server to the PayPal API
+//     var PAYPAL_ORDER_API = 'https://api.paypal.com/v2/checkout/orders/';
+// // 1a. Import the SDK package
+// const checkoutNodeJssdk = require('@paypal/checkout-server-sdk');
+
+// 1b. Import the PayPal SDK client that was created in `Set up Server-Side SDK`.
+/**
+ *
+ * PayPal HTTP client dependency
+ */
+// const payPalClient = require('../Common/payPalClient');
+
+// 2. Set up your server to receive a call from the client
+module.exports = async function handleRequest(req, res) {
+
+  // 2a. Get the order ID from the request body
+  const orderID = req.body.orderID;
+
+  // 3. Call PayPal to get the transaction details
+  let request = new checkoutNodeJssdk.orders.OrdersGetRequest(orderID);
+
+  let order;
+  // try {
+  //   order = await payPalClient.client().execute(request);
+  // } catch (err) {
+
+  //   // 4. Handle any errors from the call
+  //   console.error(err);
+  //   return res.send(500);
+  // }
+
+  // 5. Validate the transaction details are as expected
+  // if (order.result.purchase_units[0].amount.value !== '220.00') {
+  //   return res.send(400);
+  // }
+
+  // 6. Save the transaction in your database
+  // await database.saveTransaction(orderID);
+
+  // 7. Return a successful response to the client
+  // return res.send(200);
+}
 transporter.sendMail(mailOptions, function(error, info){
   if (error) {
     console.log(error);
   } else {
     console.log('Email sent: ' + info.response);
-    req.flash('success','Thank your message is sent successfully ');
+    req.flash('mssg','Thank your message is sent successfully ');
   }
   
   res.redirect("/contact");
@@ -97,19 +145,7 @@ transporter.sendMail(mailOptions, function(error, info){
 });
 
 app.get("/",function(req,res){
-	if(!req.session.cart){
-			totalQty=0;
-		}
-		else{
-			totalQty=req.session.cart.totalQty;
-		}
-	
-	 // var cart= (req.session.cart ? req.session.cart.length :0);
-	Scarves.find(function(err,docs){
-	res.render("scarves.ejs",{scarves:docs,totalQty:totalQty});
-	});
-
-	
+res.render("new_home.ejs");
 	
 });
 app.get("/remove/:id",function(req,res,next){
@@ -137,6 +173,22 @@ res.redirect("/check");
 	 // var cart= (req.session.cart ? req.session.cart.length :0);
 	Product.find(function(err,docs){
 	res.render("shirts.ejs",{products:docs,totalQty:totalQty});
+	});
+	});
+
+	app.get("/paintings",function(req,res){
+		
+		
+		req.session.cart=cart;
+		if(!req.session.cart){
+			totalQty=0;
+		}
+		else{
+			totalQty=req.session.cart.totalQty;
+		}
+	 // var cart= (req.session.cart ? req.session.cart.length :0);
+	Painting.find(function(err,docs){
+	res.render("paintings.ejs",{paintings:docs,totalQty:totalQty});
 	});
 	});
 
@@ -203,6 +255,10 @@ app.get("/contact",function(req,res){
 	
 });
 
+app.get("/customise",function(req,res){
+	res.render("customise.ejs");
+	
+});
 
 app.get("/add/:id",function(req,res){
 
@@ -280,6 +336,47 @@ transporter.sendMail(mailOptions, function(error, info){
 	
 
 });
+
+
+
+app.post("/custom",function(req,res,next){
+	
+	
+		var mailOptions = {
+  from:  'khayatove@yahoo.com',
+  to: 'khayatove@yahoo.com',
+  subject: 'Custom order',
+  // attachments:req.body.upload,
+  	
+
+ 
+    
+  
+  text: "check the new order" +"\n"+"\n"+
+  "From:"+" "+req.body.name +"\n"+"\n"+
+   
+  "Phone:"+" "+req.body.phone +"\n"+ "\n"+
+  "order:"+" "+req.body.order 
+  
+  
+};
+transporter.sendMail(mailOptions, function(error, info){
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
+    req.flash('sent','order placed successfully, you will be contacted soon ');
+    
+  }
+  
+  res.redirect("/customise");
+
+});
+
+	
+	
+
+});
 app.get("/addscarf/:id",function(req,res){
 
 
@@ -296,7 +393,7 @@ app.get("/addscarf/:id",function(req,res){
 		console.log(product.name);
 		Scarves.find(function(err,docs){
 
-	res.redirect("/");
+	res.redirect("/scarves");
 	});
 // 		res.render('shirts.ejs', {
 //     	layout:false,
@@ -306,6 +403,38 @@ app.get("/addscarf/:id",function(req,res){
 	});
 	
 });
+
+
+
+
+
+app.get("/addpaint/:id",function(req,res){
+
+
+	var productId=req.params.id;
+	 cart= new Cart(req.session.cart ? req.session.cart :{});
+
+	Painting.findById(productId,function(err,product){
+		if(err){
+			 return res.redirect("/check");
+		}
+		cart.add(product,product.name+"","");
+		req.session.cart=cart;
+		console.log(req.session.cart.totalQty);
+		console.log(product.name);
+		Painting.find(function(err,docs){
+
+	res.redirect("/paintings");
+	});
+// 		res.render('shirts.ejs', {
+//     	layout:false,
+//     	session: req.session
+// });
+		
+	});
+	
+});
+
 
 
 

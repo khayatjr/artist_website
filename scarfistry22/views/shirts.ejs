@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="/cart_ejs_folder/css/style.css"> <!-- Resource style -->
 	<script src="/cart_ejs_folder/js/modernizr.js"></script> <!-- Modernizr -->
 	<link rel="shortcut icon" href="/cart_ejs_folder/logo1.png" type="image/x-icon" />
+	
 	<!-- <link rel="stylesheet" href="font-awesome.min.css"> -->
   	<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> -->
   <!-- 	<link rel="stylesheet" href="yy/bootstrap.min.css"/> -->
@@ -26,27 +27,32 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href='https://fonts.googleapis.com/css?family=Dancing Script' rel='stylesheet'>
 	<link rel="stylesheet" type="text/css" href="/cart_ejs_folder/add_cart.css">
+	<link rel="stylesheet" type="text/css" href="/tmp.css">
 	<title>T-Shirts</title>
 </head>
 	
-<body onload="myFunction2()" >
+<body onload="myFunction2()" 
+>
 	<!-- rgba(0, 0, 0, 0.08) -->
 	<!-- #ede2e1 -->
 	<!-- #e3d9d8 -->
-	 <div class="topnav" style=" padding-top:5px; margin-top:-5px; background-color:  #e6dcda ; "id="navbar">
+	<!-- #e6dcda --> 
+	<!-- the old background color -->
+	 <div class="topnav" style=" padding-top:5px; margin-top:-5px; background-color: #1e4240 ; "id="navbar">
   <img src="/cart_ejs_folder/media/sign2.png" width="20%" height="25%" style="padding-bottom: 20px; padding-left: 2.5%; padding-top: 10px; margin-right:20%; ">
 
-  
+   <!-- #1e4240 -->
  <div class="nav" id="myTopnav"style="float: right; padding-right: 5%;padding-top: 1%;" >
  	
  	<a href="/home" style="color: white">HOME</a>
  	<div class="dropdown"> <button class="btn" href="#shop.html">SHOP</button> 
  		
-  <div class="dropdown-content">
+  <div class="dropdown-content"  style=" background-color: #1e4240;">
     
-    <a href="#">PAINTINGS</a>
+    <a href="/paintings">PAINTINGS</a>
     <a href="/scarves">SCARVES</a>
     <a href="/tshirts">T-SHIRTS</a>
+    <a href="/customise">CUSTOMIZE</a>
   </div>
 
 </div>
@@ -161,21 +167,51 @@
 <br>
 <br>
  -->
+
+
+
+
  <% var len = products.length %>
 	<h1> T-shirts</h1>
 	<ul class="cd-gallery">
 		<% for(var i=0 ;i< len ;i++){%>
 		<li>
-			<div class="cd-single-item">
-				<a href="#0">
+			<div class="cd-single-item" >
+
+			  <div class="product">
+      
+        <div class="make3D">
+            
+               
+                <div class="carousel">
+                    <ul class="carousel-container">
+                        <li><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/1.jpg" alt="" /></li>
+                        <li><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/2.jpg" alt="" /></li>
+                        <li><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/3.jpg" alt="" /></li>
+                    </ul>
+                    <div class="arrows-perspective">
+                        <div class="carouselPrev">
+                            <div class="y"></div>
+                            <div class="x"></div>
+                        </div>
+                        <div class="carouselNext">
+                            <div class="y"></div>
+                            <div class="x"></div>
+                        </div>
+                    </div>
+                </div>
+           
+        </div>  
+    
+				<!-- <a href="#0">
 					<ul class="cd-slider-wrapper">
 						<li><img src="/cart_ejs_folder/img/thumb-1.jpg" alt="Preview image"></li>
 						<li class="selected"><img src="<%= products[i].imagepath%>" alt="Preview image"></li>
 						<li><img src="/cart_ejs_folder/img/thumb-3.jpg" alt="Preview image"></li>
 					</ul>
-				</a>
+				</a> -->
 				
-
+   
 				<form method="post" name="myForm"  id="tableForm" action="size/<%= products[i].id %>" class="cd-customization"  >
 					<!-- <div class="color selected-2" data-type="select">
 						<ul>
@@ -204,7 +240,7 @@
 						</svg>
 					</button>
 
-   
+   </div>
 				</div> <!-- .cd-customization -->
 </form>
 
@@ -220,7 +256,9 @@
 <% } %>
 </ul>
 
-
+   
+    
+ 
 
 <script>
 	
@@ -260,5 +298,7 @@ function myFunction2() {
 	<!-- <script src="js/localstorage.js"></script> -->
 <script src="/cart_ejs_folder/js/jquery-2.1.4.js"></script>
 <script src="/cart_ejs_folder/js/main.js"></script> <!-- Resource jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="/tmp1.js"></script>
 </body>
 </html>

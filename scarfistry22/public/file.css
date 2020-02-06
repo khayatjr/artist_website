@@ -3,7 +3,7 @@
     padding: 0;
 }
 html {
-    background-color: #eefbf8;
+    /*background-color: #eefbf8;*/
     background-image: radial-gradient(circle, hsla(0,0%,100%,.1), hsla(0,0%,0%,.75)),
                       linear-gradient(left, transparent 50%, hsla(0,0%,0%,.01) 50%);
     background-position: 50% 75%, 50% 50%;
@@ -203,15 +203,15 @@ html {
 .item-1 {
     z-index: 2;
     opacity: 1;
-  background:url('https://static.pexels.com/photos/6526/sea-beach-holiday-vacation-large.jpg');
+  background:url('/moral.png');
   background-size:cover;
   }
 .item-2{
-  background:url('https://static.pexels.com/photos/6506/alcohol-bar-drinks-party-large.jpg');
+  background:url('/piece.png');
    background-size:cover;
 }
 .item-3{
-  background:url('https://static.pexels.com/photos/6529/lake-kajak-kayak-large.jpg');
+  background:url('/wearable.png');
    background-size:cover;
 }
 

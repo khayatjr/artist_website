@@ -1,12 +1,42 @@
 var mongoose= require("mongoose");
 var Product= require("./products");
 var Scarves=require("./Scarves");
+var Paintings=require("./paintings");
 console.log("ji");
 
 mongoose.connect('mongodb://localhost:27017/scarfistry',{
     useNewUrlParser: true,
     useUnifiedTopology: true 
 })
+
+
+var paintings=
+[
+	new Paintings({
+	imagepath:"/i4.png",
+	name:"The lady",
+	price:12280,
+	description:"Oil painting representing the beauty of Egypt"
+}),
+
+new Paintings({
+	imagepath:"/i9.png",
+	name:"Le visage",
+	price:12280,
+	description:"Charcoal painting reflecting the sorrow of loss"
+}),
+
+new Paintings({
+	imagepath:"/i10.png",
+	name:"Once upon a time",
+	price:12280,
+	description:"Ink sketch for the struggle of luck"
+})
+];
+
+
+
+
 
 var products=
 [
@@ -52,14 +82,15 @@ new Scarves({
 
 var len =products.length;
 var len2=scarves.length;
-var done=0;
-for(var i=0;i<len2;i++){
-	scarves[i].save(function(err,res){
 
-	});
-}
+var done=0;
+// for(var i=0;i<len2;i++){
+// 	scarves[i].save(function(err,res){
+
+// 	});
+// }
 for(var i=0;i<len;i++){
-	products[i].save(function(err,res){
+	paintings[i].save(function(err,res){
 		console.log("hi");
 		done++;
 		if(done==len){

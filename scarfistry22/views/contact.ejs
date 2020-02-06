@@ -7,6 +7,7 @@
 <!--  <link rel="stylesheet" type="text/css" href="D:\downloads\scarfistry22\checkout-plus-master\checkout-plus-master\css\main.min.css">
   <link href='http://fonts.googleapis.com/css?family=Work+Sans:400,600,700' rel='stylesheet' type='text/css'> -->
   <link rel="stylesheet" type="text/css" href="/file.css">
+  <link rel="stylesheet" type="text/css" href="/elements.css">
 <link rel="stylesheet" href="/cart_ejs_folder/css/reset.css"> 
 <script src="https://kit.fontawesome.com/05853edf68.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css" href="/contact.css">
@@ -22,6 +23,7 @@
    <style type="text/css">
    html {
   font-size: 62.5%;
+  background-color: white;
 }
 header {
   height: 80px;
@@ -55,7 +57,11 @@ body {
   padding-top: 60px;
 }
 
-
+p{
+  font-style: italic;
+  font-size: 2rem;
+  color: white;
+}
 
 
 /* ///// inputs /////*/
@@ -77,6 +83,10 @@ input:focus ~ label, textarea:focus ~ label, input:valid ~ label, textarea:valid
 }
 
 @media only screen and (max-width: 768px){
+  .order{
+    margin-left: 20%;
+
+  }
   .carousel-wrapper{
     width: 80%;
   }
@@ -222,11 +232,74 @@ input[type=checkbox]:checked + label {
   <title>Contact</title>
 </head>
 
-<body onload="myFunction2()">
+<body onload="myFunction2();">
   <!-- rgba(0, 0, 0, 0.08) -->
   <!-- #ede2e1 -->
   <!-- #e3d9d8 -->
-   <div class="topnav" style=" padding-top:5px; margin-top:-5px; background-color:  #e6dcda ; "id="navbar" >
+
+
+
+
+
+
+<div id="abc">
+<!-- Popup Div Starts Here -->
+<div id="popupContact" >
+<!-- Contact Us Form -->
+<form action="/custom" id="form" method="post" name="form" class="form" >
+<img id="close" src="/close.png" style="width:7%; height: 7%; margin-right: 5%; margin-top: 4%;" onclick ="div_hide()">
+<h2 >Custom order</h2>
+<hr class="hr">
+<input id="name" name="name" placeholder="Name" type="text" class="input" required>
+<input id="email" name="phone" placeholder="Phone" type="Number" class="input"  required>
+<textarea id="msg" name="order" placeholder="Please state your order in details." class="input"  required ></textarea>
+
+<!-- <input type="file" style="margin-bottom: 4%; margin-top: 4%; width: 80%;" name="upload"> -->
+        <div style="margin-left: 8%;">
+<button  id="submit" style="background-color:  RGB(125,204,173); " name="submit" >Order</button>
+ </div>
+</form>
+</div>
+<!-- Popup Div Ends Here -->
+</div>
+<!-- Display Popup Button -->
+
+
+<script type="text/javascript">
+  
+
+
+// Validating Empty Field
+function check_empty() {
+if (document.getElementById('name').value == "" || document.getElementById('email').value == "" || document.getElementById('msg').value == "") {
+alert("Please fill in all fileds");
+} else {
+document.getElementById('form').submit();
+alert("Order submitted successfully, you will be contacted soon");
+}
+}
+//Function To Display Popup
+function div_show() {
+document.getElementById('abc').style.display = "block";
+}
+//Function to Hide Popup
+function div_hide(){
+document.getElementById('abc').style.display = "none";
+}
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+   <div class="topnav" style=" padding-top:5px; margin-top:-5px; background-color:  #1e4240 ; "id="navbar" >
   <img src="/cart_ejs_folder/media/sign2.png" width="20%" height="25%" style="padding-bottom: 20px; padding-left: 2.5%; padding-top: 10px; margin-right:20%; ">
 
   
@@ -235,11 +308,12 @@ input[type=checkbox]:checked + label {
   <a href="/home" style="color: white">HOME</a>
   <div class="dropdown"> <button class="btn" href="#shop.html">SHOP</button> 
     
-  <div  class="dropdown-content">
+  <div  class="dropdown-content"  style=" background-color: #1e4240;">
     
-    <a href="#">PAINTINGS</a>
+    <a href="/paintings">PAINTINGS</a>
     <a href="/scarves">SCARVES</a>
     <a href="/tshirts">T-SHIRTS</a>
+    <a href="/customise">CUSTOMIZE</a>
     </div>
 
 
@@ -350,12 +424,22 @@ input[type=checkbox]:checked + label {
 
  
   <h1 style="margin-top: 0.5%;"> Contact</h1>
-  <form class="container" id="mobile" method="post" action="/mail">
-      <%if (messages.success){%>
-   <div class="success">
-       <%=messages.success%>
+
+
+  <%if (messages.mssg){%>
+   <div class="success" style="margin-top: 4%; margin-left: 30%; font-size: 2rem;">
+       <%=messages.mssg%>
    </div>
    <%}%>
+    
+    <%if (messages.sent){%>
+   <div class="success" style="margin-top: 4%; margin-left: 30%; font-size: 2rem;">
+       <%=messages.sent%>
+   </div>
+   <%}%>
+
+  <form class="container" id="mobile" method="post" action="/mail">
+    
 <!--   <div class="row">
       <h4 style="text-align:center">We'd love to hear from you!</h4>
   </div> -->
@@ -374,7 +458,7 @@ input[type=checkbox]:checked + label {
       </div>
       <div class="col-md-6 col-sm-12" >
         <div class="styled-input" style="float:right;">
-          <input type="Number" required name="phone" />
+          <input type="text" required name="phone" />
           <label>Phone Number</label> 
         </div>
       </div>
@@ -389,38 +473,9 @@ input[type=checkbox]:checked + label {
       </div>
   </div>
 </form>
-<!-- Custom orders -->
-<div style="margin-top: 40%;">
-  
-    <h1 style="margin-top: 5%;"> Custom Order </h1>
 
-</div>
-<br>
-<div class="carousel-wrapper" class="caro">
-  <span id="item-1"></span>
-  <span id="item-2"></span>
-  <span id="item-3"></span>
-  <div class="carousel-item item-1">
-    <h2>Item 1</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus   accumsan pretium dolor vel convallis. Aliquam erat volutpat. Maecenas lacus nunc, imperdiet sed mi et, finibus suscipit mi.</p>
-    <a class="arrow arrow-prev" href="#item-3"></a>
-    <a class="arrow arrow-next" href="#item-2"></a>
-  </div>
-  
-  <div class="carousel-item item-2">
-    <h2>Item 2</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus accumsan pretium dolor vel convallis. Aliquam erat volutpat.</p>
-    <a class="arrow arrow-prev" href="#item-1"></a>
-    <a class="arrow arrow-next" href="#item-3"></a>
-  </div>
-  
-  <div class="carousel-item item-3">
-    <h2>Item 3</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus accumsan pretium dolor vel convallis. Aliquam erat volutpat.</p>
-    <a class="arrow arrow-prev" href="#item-2"></a>
-    <a class="arrow arrow-next" href="#item-1"></a>
-  </div>
-</div>
+
+
 
 <script>
   
@@ -453,7 +508,7 @@ function myFunction2() {
 
 </script>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     window.onload = function () {
         var fileupload = document.getElementById("FileUpload1");
         var filePath = document.getElementById("spnFilePath");
@@ -466,7 +521,7 @@ function myFunction2() {
             filePath.innerHTML =   "   "+fileName;
         };
     };
-</script>
+</script> -->
         </div> <!-- .cd-customization -->
 
         <!-- <button class="cd-customization-trigger">Customize</button> -->

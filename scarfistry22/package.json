@@ -6,12 +6,15 @@
   "dependencies": {
     "connect-flash": "^0.1.1",
     "connect-mongo": "^3.2.0",
+    "crypto-js": "^3.1.9-1",
+    "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
     "express-session": "^1.17.0",
     "express-validator": "^6.3.1",
     "mongodb": "^3.4.1",
     "mongoose": "^4.10.0",
-    "nodemailer": "^6.4.2"
+    "nodemailer": "^6.4.2",
+    "square-connect": "^2.20200122.0"
   },
   "devDependencies": {},
   "scripts": {

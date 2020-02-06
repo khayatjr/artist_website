@@ -1,80 +1,57 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
-    <link rel="stylesheet" type="text/css" href="file.css">
+<title>Popup contact form</title>
+<link href="elements.css" rel="stylesheet">
+<script src="js/my_js.js"></script>
 </head>
+<!-- Body Starts Here -->
 <body>
-
-<div class="carousel-wrapper">
-  <span id="item-1"></span>
-  <span id="item-2"></span>
-  <span id="item-3"></span>
-  <div class="carousel-item item-1">
-    <h2>Item 1</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus   accumsan pretium dolor vel convallis. Aliquam erat volutpat. Maecenas lacus nunc, imperdiet sed mi et, finibus suscipit mi.</p>
-    <a class="arrow arrow-prev" href="#item-3"></a>
-    <a class="arrow arrow-next" href="#item-2"></a>
-  </div>
-  
-  <div class="carousel-item item-2">
-    <h2>Item 2</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus accumsan pretium dolor vel convallis. Aliquam erat volutpat.</p>
-    <a class="arrow arrow-prev" href="#item-1"></a>
-    <a class="arrow arrow-next" href="#item-3"></a>
-  </div>
-  
-  <div class="carousel-item item-3">
-    <h2>Item 3</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus accumsan pretium dolor vel convallis. Aliquam erat volutpat.</p>
-    <a class="arrow arrow-prev" href="#item-2"></a>
-    <a class="arrow arrow-next" href="#item-1"></a>
-  </div>
+<div id="abc">
+<!-- Popup Div Starts Here -->
+<div id="popupContact">
+<!-- Contact Us Form -->
+<form action="#" id="form" method="post" name="form" class="form">
+<img id="close" src="images/3.png" onclick ="div_hide()">
+<h2>Contact Us</h2>
+<hr class="hr">
+<input id="name" name="name" placeholder="Name" type="text" class="input">
+<input id="email" name="email" placeholder="Email" type="text" class="input">
+<textarea id="msg" name="message" placeholder="Message" class="input"></textarea>
+<a href="javascript:%20check_empty()" id="submit" class="input">Send</a>
+</form>
 </div>
+<!-- Popup Div Ends Here -->
+</div>
+<!-- Display Popup Button -->
+<h1>Click Button To Popup Form Using Javascript</h1>
+<button id="popup" onclick="div_show()">Popup</button>
+<script type="text/javascript">
+  
+
+
+// Validating Empty Field
+function check_empty() {
+if (document.getElementById('name').value == "" || document.getElementById('email').value == "" || document.getElementById('msg').value == "") {
+alert("Fill All Fields !");
+} else {
+document.getElementById('form').submit();
+alert("Form Submitted Successfully...");
+}
+}
+//Function To Display Popup
+function div_show() {
+document.getElementById('abc').style.display = "block";
+}
+//Function to Hide Popup
+function div_hide(){
+document.getElementById('abc').style.display = "none";
+}
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <ul class="slider">
-    <li>
-        <input type="radio" id="slide1" name="slide" checked>
-        <label for="slide1"></label>
-        <img src="https://dribbble.s3.amazonaws.com/users/322/screenshots/872485/coldchase.jpg" alt="Panel 1">
-    </li>
-    <li>
-        <input type="radio" id="slide2" name="slide">
-        <label for="slide2"></label>
-       <img src="https://dribbble.s3.amazonaws.com/users/322/screenshots/980517/icehut_sm.jpg" alt="Panel 2">
-    </li>
-    <li>
-        <input type="radio" id="slide3" name="slide">
-        <label for="slide3"></label>
-        <img src="https://dribbble.s3.amazonaws.com/users/322/screenshots/943660/hq_sm.jpg" alt="Panel 3">
-    </li>
-    <li><a href="http://cssslider.com/">
-        <input type="radio" id="slide4" name="slide">
-        <label for="slide4"></label>
-        <img src="https://dribbble.s3.amazonaws.com/users/322/screenshots/599584/home.jpg" alt="Panel 4"></a>
-    </li>
-</ul>
- -->
-<!-- Images from Craig Henry's Dribbble profile: http://dribbble.com/craighenry -->
-
-
-
-
-<script src="caro.js"></script>
+</script>
 </body>
+<!-- Body Ends Here -->
 </html>

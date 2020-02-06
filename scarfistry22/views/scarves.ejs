@@ -33,7 +33,7 @@
 	<!-- rgba(0, 0, 0, 0.08) -->
 	<!-- #ede2e1 -->
 	<!-- #e3d9d8 -->
-	 <div class="topnav" style=" padding-top:5px; margin-top:-5px; background-color:  #e6dcda ; "id="navbar" >
+	 <div class="topnav" style=" padding-top:5px; margin-top:-5px; background-color:  #1e4240 ; "id="navbar" >
   <img src="/cart_ejs_folder/media/sign2.png" width="20%" height="25%" style="padding-bottom: 20px; padding-left: 2.5%; padding-top: 10px; margin-right:20%; ">
 
   
@@ -42,11 +42,12 @@
  	<a href="/home" style="color: white">HOME</a>
  	<div class="dropdown"> <button class="btn" href="#shop.html">SHOP</button> 
  		
-  <div  class="dropdown-content">
+  <div style="background-color:  #1e4240 ;"  class="dropdown-content" >
     
-    <a href="#">PAINTINGS</a>
+    <a href="/paintings">PAINTINGS</a>
     <a href="/scarves">SCARVES</a>
     <a href="/tshirts">T-SHIRTS</a>
+    <a href="/customise">CUSTOMIZE</a>
     </div>
 
 
@@ -202,7 +203,7 @@
 
 			<div class="cd-item-info">
 				<b><a href="#0" class="title"><%= scarves[i].name%></a></b>
-				<em class="price"><%= scarves[i].price%></em>
+				<em class="price"><%= scarves[i].price%> EGP</em>
 			</div> <!-- cd-item-info -->
 		</li>
 <% } %>

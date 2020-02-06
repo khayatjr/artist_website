@@ -131,7 +131,7 @@ textarea{
 }
 .cd-cart{
    position: fixed;
-    top: 300px;
+    top: 80px;
     right: 30px;
     z-index: 3;
 }
