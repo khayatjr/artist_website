@@ -13,24 +13,57 @@ mongoose.connect('mongodb://localhost:27017/scarfistry',{
 var paintings=
 [
 	new Paintings({
-	imagepath:"/i4.png",
-	name:"The lady",
-	price:12280,
-	description:"Oil painting representing the beauty of Egypt"
+	imagepath:'/paintings/11.jpg',
+	img2:"/paintings/1.jpeg",
+	zoom:"/paintings/zoom1.jpg",
+	material:"mixed media on wood panel ",
+	name:"Guardian of the legacy",
+	size:"120 x 100 cm",
+	price:6000,
+	description:"A piece that speaks of history people and an appreciation of Egypts riches A closer look reveals subtle details of intriguing elements as well as a myriad of textures "
 }),
 
 new Paintings({
-	imagepath:"/i9.png",
-	name:"Le visage",
-	price:12280,
-	description:"Charcoal painting reflecting the sorrow of loss"
+	imagepath:'/paintings/22.jpg',
+	img2:"/paintings/2.jpg",
+	zoom:"/paintings/zoom2.jpg",
+	material:"mixed media on wood panel piece",
+	name:"Al Amira Mariam",
+	size:"150 x 120 cm ",
+	price:7000,
+	description:" "
+}),
+new Paintings({
+	imagepath:'/paintings/33.jpg',
+	img2:"/paintings/3.jpg",
+	zoom:"/paintings/zoom3.jpg",
+	material:"Oil on canvas",
+	name:"\"All for 30\"",
+	size:"100 cm x 70 cm",
+	price:8500,
+	description:"The painting depicts a teenage boy at Cairos metro station. Dressed in a torn, worn out Gucci shirt & holding a basket full of expensive perfume, the boy represents the paradox that is Cairos current state. "
 }),
 
 new Paintings({
-	imagepath:"/i10.png",
-	name:"Once upon a time",
-	price:12280,
-	description:"Ink sketch for the struggle of luck"
+	imagepath:'/paintings/44.jpg',
+	img2:"/paintings/44.jpg",
+	zoom:"/paintings/zoom4.jpg",
+	material:"Oil on canvas ",
+	name:"Ecstasy ",
+	size:"100 x 70 cm ",
+	price:3500,
+	description:" h"
+}),
+
+new Paintings({
+	imagepath:'/paintings/55.jpg',
+	img2:"/paintings/5.jpg",
+	zoom:"/paintings/zoom5.jpg",
+	material:"Oil on canvas",
+	name:"Youth",
+	size:"120 x 80 cm ",
+	price:7000,
+	description:"h "
 })
 ];
 
@@ -41,21 +74,24 @@ new Paintings({
 var products=
 [
 	new Product({
-	imagepath:"/cart_ejs_folder/p2.png",
-	name:"Tongues Tied",
-	price:280
+	imagepath:"/shirts_pics/11.jpg",
+	img2:"/shirts_pics/12.jpeg",
+	name:"Tongue-tied",
+	price:350
 }),
 
 new Product({
-	imagepath:"/cart_ejs_folder/p3.png",
+	imagepath:"/shirts_pics/21.jpg",
+	img2:"/shirts_pics/22.jpg",
 	name:"EL Mooled",
-	price:280
+	price:350
 }),
 
 new Product({
-	imagepath:"/cart_ejs_folder/p1.png",
+	imagepath:"/shirts_pics/31.jpg",
+	img2:"/shirts_pics/32.jpeg",
 	name:"The Temple",
-	price:280
+	price:350
 })
 ];
 
@@ -80,7 +116,7 @@ new Scarves({
 })
 ];
 
-var len =products.length;
+var len =paintings.length;
 var len2=scarves.length;
 
 var done=0;

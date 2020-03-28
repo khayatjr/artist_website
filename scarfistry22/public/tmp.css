@@ -94,7 +94,7 @@
 }
 .carousel{
 	width:315px;
-	height:500px;
+	height:420px;
 	overflow:hidden;
 	position:relative;
 }
@@ -136,7 +136,7 @@
 
 
 	right:0;
-		opacity:0.8;
+		opacity:0.6;
 		background: #fff;
 		-webkit-transform: rotateY( 0deg );
          -moz-transform: rotateY( 0deg );
@@ -166,7 +166,7 @@
 
 
 left:0;
-		opacity:0.8;
+		opacity:0.6;
 		background: #fff;
 		-webkit-transform: rotateY( 0deg );
          -moz-transform: rotateY( 0deg );

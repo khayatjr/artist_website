@@ -207,8 +207,10 @@ res.redirect("/check");
 	});
 	});
 	var size;
+	var coloring;
 app.post("/size/:id", function (req, res) {
 	size=req.body.example;
+	coloring=req.body.coloring;
 	arr.push(size);
 	console.log(size);
 
@@ -219,7 +221,7 @@ app.post("/size/:id", function (req, res) {
 		if(err){
 			return res.redirect("/check");
 		}
-		cart.add(product,product.name + size,size);
+		cart.add(product,product.name + size + coloring,size,coloring);
 		req.session.cart=cart;
 		console.log(req.session.cart.totalQty);
 		console.log(product.name);
@@ -377,7 +379,7 @@ transporter.sendMail(mailOptions, function(error, info){
 	
 
 });
-app.get("/addscarf/:id",function(req,res){
+app.post("/addscarf/:id",function(req,res){
 
 
 	var productId=req.params.id;
@@ -387,7 +389,7 @@ app.get("/addscarf/:id",function(req,res){
 		if(err){
 			 return res.redirect("/check");
 		}
-		cart.add(product,product.name+"","");
+		cart.add(product,product.name+"","","");
 		req.session.cart=cart;
 		console.log(req.session.cart.totalQty);
 		console.log(product.name);
@@ -418,7 +420,7 @@ app.get("/addpaint/:id",function(req,res){
 		if(err){
 			 return res.redirect("/check");
 		}
-		cart.add(product,product.name+"","");
+		cart.add(product,product.name+"","","");
 		req.session.cart=cart;
 		console.log(req.session.cart.totalQty);
 		console.log(product.name);

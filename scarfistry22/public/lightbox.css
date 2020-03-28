@@ -3,6 +3,7 @@ z-index:10;
 display:none;
 padding-top:10px;
 position:fixed;
+cursor: default;
 left:0;
 top:0;
 width:100%;
@@ -37,6 +38,7 @@ filter:alpha(opacity=100);
 
 .close {
 text-decoration:none;float:right;font-size:24px;font-weight:bold;color:white
+
 }
 .container1 {
 width:200px;

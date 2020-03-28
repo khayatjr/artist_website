@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="/cart_ejs_folder/css/style.css"> <!-- Resource style -->
 	<script src="/cart_ejs_folder/js/modernizr.js"></script> <!-- Modernizr -->
 	<link rel="shortcut icon" href="/cart_ejs_folder/logo1.png" type="image/x-icon" />
+	<link href="https://fonts.googleapis.com/css?family=EB+Garamond&display=swap" rel="stylesheet">
 	
 	<!-- <link rel="stylesheet" href="font-awesome.min.css"> -->
   	<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> -->
@@ -172,7 +173,7 @@
 
 
  <% var len = products.length %>
-	<h1> T-shirts</h1>
+	<h1 style=" font-family: 'EB Garamond', serif;"> T-shirts</h1>
 	<ul class="cd-gallery">
 		<% for(var i=0 ;i< len ;i++){%>
 		<li>
@@ -185,9 +186,8 @@
                
                 <div class="carousel">
                     <ul class="carousel-container">
-                        <li><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/1.jpg" alt="" /></li>
-                        <li><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/2.jpg" alt="" /></li>
-                        <li><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/3.jpg" alt="" /></li>
+                        <li><img src="<%= products[i].imagepath%>" alt="" /></li>
+                        <li><img src="<%= products[i].img2%>" alt="" /></li>
                     </ul>
                     <div class="arrows-perspective">
                         <div class="carouselPrev">
@@ -212,14 +212,8 @@
 				</a> -->
 				
    
-				<form method="post" name="myForm"  id="tableForm" action="size/<%= products[i].id %>" class="cd-customization"  >
-					<!-- <div class="color selected-2" data-type="select">
-						<ul>
-							<li class="color-1">color-1</li>
-							<li class="color-2 active">color-2</li>
-							<li class="color-3">color-3</li>
-						</ul>
-					</div> -->
+				<form method="post" name="myForm"  id="tableForm" action="size/<%= products[i].id %>" class="cd-customization" >
+					
 					
         <select class="size" name="example"  required>
               <option value="">Select size</option>
@@ -228,11 +222,18 @@
               <option class="medium" value="Large">Large</option>
         </select>
 				
+				  <select class="size" name="coloring"  required>
+              <option value="">Select color</option>
+              <option class="medium" value="White">White</option>
+              <option class="medium" value="Black">Black</option>
+              <option class="medium" value="Grey">Grey</option>
+        </select>
+				
 
   
         
 
-					<button     class="add-to-cart"  >
+					<button     class="add-to-cart"  style="margin-left: 20%; margin-top: 5%;">
 
 						<em style="padding-left: 6%;">Add to Cart</em>
 						<svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">

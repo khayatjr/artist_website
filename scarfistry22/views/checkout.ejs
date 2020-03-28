@@ -22,6 +22,8 @@
     <link rel="shortcut icon" href="/logo1.png" type="image/x-icon" />
 
 <link rel="stylesheet" type="text/css" href="/cart_ejs_folder/add_cart.css">
+<link href="https://fonts.googleapis.com/css?family=EB+Garamond&display=swap" rel="stylesheet">
+
 
    
 </head>
@@ -210,7 +212,7 @@
     <!-- </div> -->
     
     
-   <h1 style="font-size: 40px;text-align: center;background-color:RGB(125,204,173); ">Checkout </h1>
+   <h1 style="font-size: 40px;text-align: center;background-color:RGB(125,204,173); font-family: 'EB Garamond', serif;">Checkout </h1>
   
   
     <main id="main" role="main"  >
@@ -242,9 +244,11 @@
                                    <span class="badge badge-secondary badge-pill" style="background-color: RGB(125,204,173);"><%=bag[i].qty%></span>
                                   <!--  <i class="fas fa-plus "></i> -->
                                      <span class="text-muted"> <%=bag[i].size %></span>
+                                     <br>   
+                                     <span style="margin-left: 25%;" class="text-muted"> <%=bag[i].color %></span>
                                 </div>
                                 <img src= "<%= bag[i].item.imagepath%>" style="width: 15%; height: 15%; margin-left: 2%;" >
-                                <div style="margin-top: 25px; right: 15%;position: absolute;"> <button onclick="window.location.href='/remove/<%=bag[i].item.name+bag[i].size%>'" style="border: none; background-color: white;"> 
+                                <div style="margin-top: 25px; right: 15%;position: absolute;"> <button onclick="window.location.href='/remove/<%=bag[i].item.name+bag[i].size+bag[i].color%>'" style="border: none; background-color: white;"> 
                                     <i class="far fa-trash-alt"  aria-hidden="true"></i>
                                 </button></div>
 

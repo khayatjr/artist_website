@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="/cart_ejs_folder/css/style.css"> <!-- Resource style -->
 	<script src="/cart_ejs_folder/js/modernizr.js"></script> <!-- Modernizr -->
 	<link rel="shortcut icon" href="/cart_ejs_folder/logo1.png" type="image/x-icon" />
+	<link href="https://fonts.googleapis.com/css?family=EB+Garamond&display=swap" rel="stylesheet">
 	<!-- <link rel="stylesheet" href="font-awesome.min.css"> -->
   	<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> -->
   <!-- 	<link rel="stylesheet" href="yy/bootstrap.min.css"/> -->
@@ -26,6 +27,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href='https://fonts.googleapis.com/css?family=Dancing Script' rel='stylesheet'>
 	<link rel="stylesheet" type="text/css" href="/cart_ejs_folder/add_cart.css">
+	<link rel="stylesheet" type="text/css" href="/tmp.css">
+	
 	<title>Scarves</title>
 </head>
 
@@ -109,7 +112,7 @@
             	 <a href="/check" class="cd-cart">
 
             	 <% if(totalQty>0){%>
-
+            	 
 				<span><%= totalQty %></span>
 
             	<%}%>
@@ -166,20 +169,41 @@
 <br>
  -->
  <% var len = scarves.length %>
-	<h1> Scarves</h1>
+	<h1 style="font-family: 'EB Garamond', serif;"> Scarves</h1>
 	<ul class="cd-gallery">
 		<% for(var i=0 ;i< len ;i++){%>
 		<li>
 			<div class="cd-single-item">
-				<a href="#0">
-					<ul class="cd-slider-wrapper">
-						<li><img src="/cart_ejs_folder/img/thumb-1.jpg" alt="Preview image"></li>
-						<li class="selected"><img src="<%= scarves[i].imagepath%>" alt="Preview image"></li>
-						<li><img src="/cart_ejs_folder/img/thumb-3.jpg" alt="Preview image"></li>
-					</ul>
-				</a>
 
-				<div class="cd-customization">
+					  <div class="product">
+      
+        <div class="make3D">
+            
+               
+                <div class="carousel">
+                    <ul class="carousel-container">
+                        <li><img src="<%=scarves[i].imagepath%>" alt="" /></li>
+                        <li><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/2.jpg" alt="" /></li>
+                        <li><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/3.jpg" alt="" /></li>
+                    </ul>
+                    <div class="arrows-perspective">
+                        <div class="carouselPrev">
+                            <div class="y"></div>
+                            <div class="x"></div>
+                        </div>
+                        <div class="carouselNext">
+                            <div class="y"></div>
+                            <div class="x"></div>
+                        </div>
+                    </div>
+                </div>
+           
+        </div>  
+    
+			
+				
+   
+				<form method="post" name="myForm"  id="tableForm" action="/addscarf/<%= scarves[i].id %>" class="cd-customization"  >
 					<!-- <div class="color selected-2" data-type="select">
 						<ul>
 							<li class="color-1">color-1</li>
@@ -188,15 +212,23 @@
 						</ul>
 					</div> -->
 					
-					
+        
+				
 
-					<a style="margin-left: 22%;" href="/addscarf/<%= scarves[i].id %>" class="add-to-cart" role"button" >
-						<em style="padding-left: 15%;">Add to Cart</em>
+  
+        
+
+					<button     class="add-to-cart" style="margin-left: 25%;" >
+
+						<em style="padding-left: 6%;">Add to Cart</em>
 						<svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
 							<path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
 						</svg>
-					</a>
+					</button>
+
+   </div>
 				</div> <!-- .cd-customization -->
+</form>
 
 				<!-- <button class="cd-customization-trigger">Customize</button> -->
 			</div> <!-- .cd-single-item -->
@@ -204,7 +236,9 @@
 			<div class="cd-item-info">
 				<b><a href="#0" class="title"><%= scarves[i].name%></a></b>
 				<em class="price"><%= scarves[i].price%> EGP</em>
+
 			</div> <!-- cd-item-info -->
+
 		</li>
 <% } %>
 </ul>
@@ -245,5 +279,7 @@ function myFunction2() {
 	<!-- <script src="js/localstorage.js"></script> -->
 <script src="/cart_ejs_folder/js/jquery-2.1.4.js"></script>
 <script src="/cart_ejs_folder/js/main.js"></script> <!-- Resource jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="/tmp1.js"></script>
 </body>
 </html>

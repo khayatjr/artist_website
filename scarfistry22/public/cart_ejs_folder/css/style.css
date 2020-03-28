@@ -79,6 +79,9 @@ Cart button
 .cd-cart span {
   /* number of items added to the cart */
   /*position: absolute;*/
+   padding-right: 0.4em;
+  padding-left: 0.4em;
+  border-radius: 10rem;
   top: 2px;
   right: 5px;
   height: 18px;
@@ -89,7 +92,7 @@ Cart button
   font-size: 1.5rem;
   /*font-weight: bold;*/
   text-align: center;
-  border-radius: 70%;
+  border-radius: 50%;
    /*scale it down if no products have been added to the cart */
   -webkit-transform: scale(0);
   -moz-transform: scale(0);
