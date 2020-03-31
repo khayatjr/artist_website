@@ -19,9 +19,23 @@ display: block;
     position: absolute;
   top: 50%;
   left: 50%;
+  /*width: 80%;
+  height:80%;*/
+  transform: translate(-50%, -50%);
+}
+@media screen and (max-width: 1200px) {
+  .modal-content{
+margin: auto;
+display: block;
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  height:80%;
   transform: translate(-50%, -50%);
 }
 
+}
 
 .modal-hover-opacity {
 /*opacity:1;*/

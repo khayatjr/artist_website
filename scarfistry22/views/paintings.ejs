@@ -57,7 +57,7 @@
   background:  no-repeat;
   cursor: none;
   /*hide the glass by default*/
-  z-index: 8;
+  z-index: 12;
   display: none;
 }
 
@@ -270,7 +270,7 @@ $('html').on({
 					<% var desc= paintings[i].description%>
 							
 <button style="background-color: #1e4240;
- " onclick="onClick('<%= paintings[i].img2 %>','<%= paintings[i].description%>','<%= paintings[i].zoom %>');" class="add-to-cart"  >
+ " onclick="onClick('<%= paintings[i].img2 %>','<%= paintings[i].description%>','<%= paintings[i].size %>','<%= paintings[i].material %>');" class="add-to-cart"  >
 						
 						<em >View</em>
 						<svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
@@ -291,7 +291,31 @@ $('html').on({
 </ul>
 
 
+<style>
+@media screen and (min-width: 1200px) {
+	#siz{
+color: white; position: absolute; margin-top: 3%; background-color: rgba(157, 155, 155, 0.47); margin-left: 102%; top: 15%; width: 300px; margin-right: 15%; font-size: x-large; font-family: 'EB Garamond', serif;
+	}
+	#mat{
 
+		position:absolute;background-color: rgba(157, 155, 155, 0.47); color: white;margin-left: 102%; top: 36%; width: 300px; margin-right: 15%; font-size: x-large; font-family: 'EB Garamond', serif;
+	}
+	#h4{
+		position:absolute;background-color: rgba(157, 155, 155, 0.47); color: white;margin-left: 102%; top: 60%; width: 300px; margin-right: 15%; font-size: x-large; font-family: 'EB Garamond', serif;
+	}
+	
+	}
+		#siz{
+color: white;  margin-top: 3%; background-color: rgba(157, 155, 155, 0.47);   font-family: 'EB Garamond', serif;
+	}
+	#mat{
+
+	margin-top: 3%;	background-color: rgba(157, 155, 155, 0.47); color: white;  font-family: 'EB Garamond', serif;
+	}
+	#h4{
+	margin-top: 3%;	background-color: rgba(157, 155, 155, 0.47); color: white; font-family: 'EB Garamond', serif;
+	}
+</style>
 
 <div id="modal01" class="modal">
   <span  class="close button"  onclick="func();">&times;&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -300,10 +324,18 @@ $('html').on({
     <img class="magniflier small" id="img01" style="max-width:100%;">
     <div class="large" id="a"></div>
 <!-- </a> -->
-    <h4 id="h4" style="	color: white; position: absolute; margin-top: 3%; background-color: rgba(157, 155, 155, 0.47); margin-left: 102%; top: 25%; width: 300px; margin-right: 15%; font-size: x-large; font-family: 'EB Garamond', serif;">heyyyyyyyyyyyy</h4>
+    <h4 id="siz">Size:<br> 25 x 100 cm </h4>
+  
+    <h4 id="mat"> Material:<br> mixed media on wood panel piece </h4>
+
+     <h4  id="h4"> hey </h4>
+
+  </div>
+  
+  	
   </div>
  
-</div>
+
 
 <script>
 	function func(){
@@ -342,7 +374,7 @@ function myFunction2() {
 </script>
 
 <script>
-function onClick(img,txt,zoomed) {
+function onClick(img,txt,size,material) {
 	// $('.zoom').magnify();
 	 var id = document.getElementById("img01");
 	 var large=document.getElementsByClassName("large");
@@ -361,6 +393,14 @@ function onClick(img,txt,zoomed) {
   document.getElementById("modal01").style.display = "block";
    var h4 = document.getElementById("h4");
 	 h4.innerHTML = txt;
+	 h4.style.visibility = "visible";
+	 if(h4.innerHTML=="h"){
+	 	h4.style.visibility = "hidden";
+	 }
+	 var mat = document.getElementById("mat");
+	 mat.innerHTML = "Material:"+"<br />"+material;
+	 var siz = document.getElementById("siz");
+	 siz.innerHTML ="Size:"+"<br />"+ size;
 	 var native_width = 0;
   var native_height = 0;
 

@@ -20,18 +20,18 @@ var paintings=
 	name:"Guardian of the legacy",
 	size:"120 x 100 cm",
 	price:6000,
-	description:"A piece that speaks of history people and an appreciation of Egypts riches A closer look reveals subtle details of intriguing elements as well as a myriad of textures "
+	description:"A piece that speaks of history people and an appreciation of Egypt\'s riches. A closer look reveals subtle details of intriguing elements as well as a myriad of textures. "
 }),
 
 new Paintings({
-	imagepath:'/paintings/22.jpg',
-	img2:"/paintings/2.jpg",
-	zoom:"/paintings/zoom2.jpg",
+	imagepath:'/paintings/44.jpg',
+	img2:"/paintings/44.jpg",
+	zoom:"/paintings/zoom4.jpg",
 	material:"mixed media on wood panel piece",
 	name:"Al Amira Mariam",
 	size:"150 x 120 cm ",
 	price:7000,
-	description:" "
+	description:"h"
 }),
 new Paintings({
 	imagepath:'/paintings/33.jpg',
@@ -41,18 +41,18 @@ new Paintings({
 	name:"\"All for 30\"",
 	size:"100 cm x 70 cm",
 	price:8500,
-	description:"The painting depicts a teenage boy at Cairos metro station. Dressed in a torn, worn out Gucci shirt & holding a basket full of expensive perfume, the boy represents the paradox that is Cairos current state. "
+	description:"The painting depicts a teenage boy at Cairos metro station. Dressed in a torn, worn out Gucci shirt & holding a basket full of expensive perfume, the boy represents the paradox that is Cairo\'s current state. "
 }),
 
 new Paintings({
-	imagepath:'/paintings/44.jpg',
-	img2:"/paintings/44.jpg",
-	zoom:"/paintings/zoom4.jpg",
+	imagepath:'/paintings/22.jpg',
+	img2:"/paintings/2.jpg",
+	zoom:"/paintings/zoom2.jpg",
 	material:"Oil on canvas ",
-	name:"Ecstasy ",
+	name:"Ecstasy",
 	size:"100 x 70 cm ",
 	price:3500,
-	description:" h"
+	description:"h"
 }),
 
 new Paintings({
@@ -63,7 +63,7 @@ new Paintings({
 	name:"Youth",
 	size:"120 x 80 cm ",
 	price:7000,
-	description:"h "
+	description:"h"
 })
 ];
 
