@@ -14,6 +14,12 @@ this.totalPrice+= storedItem.item.price;
 
 
 };
+this.search=function(id){
+if(this.items[id]){
+	return true;
+}
+return false;
+};
 this.reduceByOne=function(id){
 	this.items[id].qty--;
 	this.items[id].price-=this.items[id].item.price;

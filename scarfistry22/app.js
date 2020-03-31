@@ -187,8 +187,10 @@ res.redirect("/check");
 			totalQty=req.session.cart.totalQty;
 		}
 	 // var cart= (req.session.cart ? req.session.cart.length :0);
+	
+
 	Painting.find(function(err,docs){
-	res.render("paintings.ejs",{paintings:docs,totalQty:totalQty});
+	res.render("paintings.ejs",{paintings:docs,totalQty:totalQty,bag:cart});
 	});
 	});
 
