@@ -13,13 +13,12 @@ var nodemailer = require('nodemailer');
 var cart;
 var arr=[];
 var mongodb=require("mongodb");
-var mongo=mongodb.MongoClient;
 var Order=require("./order")
 app.use(flash());
 app.use(express.static("public"));
 //app.use(express.static("/public"));
 app.set('view engine', 'ejs');
-app.set("views", "views")
+app.set("views", "/views")
 
 
 var bodyparser= require("body-parser");
