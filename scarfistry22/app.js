@@ -22,11 +22,6 @@ app.use(express.static("public"));
 //app.use(express.static("/public"));
 
 
-app.engine('.hbs', exphbs({extname: '.hbs',
-							defaultView: 'default',
-							layoutsDir: './views'
-										}));
-app.set('view engine', '.hbs');
 
 var bodyparser= require("body-parser");
 // mongodb://localhost:27017/scarfistry
