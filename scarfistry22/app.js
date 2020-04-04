@@ -29,7 +29,8 @@ app.engine('.hbs', exphbs({extname: '.hbs',
 app.set('view engine', '.hbs');
 
 var bodyparser= require("body-parser");
-mongoose.connect('mongodb://localhost:27017/scarfistry',{
+// mongodb://localhost:27017/scarfistry
+mongoose.connect('mongodb+srv://Youssef:<password>@cluster0-ekeib.mongodb.net/test?retryWrites=true&w=majority',{
     useNewUrlParser: true,
     useUnifiedTopology: true 
 })
