@@ -8,7 +8,7 @@ var Cart= require("./cart");
 var session=require("express-session");
 var mongostore= require("connect-mongo")(session);
 var flash = require('connect-flash');
-var app= express();
+
 var nodemailer = require('nodemailer');
 var cart;
 var arr=[];
@@ -17,8 +17,7 @@ var Order=require("./order")
 app.use(flash());
 app.use(express.static("public"));
 //app.use(express.static("/public"));
-app.set('view engine', 'ejs');
-app.set("views", "/views");
+
 
 
 var bodyparser= require("body-parser");
