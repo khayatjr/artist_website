@@ -3,6 +3,7 @@ var mongoose= require ("mongoose");
 var Product= require("./products");
 var Scarves= require("./scarves");
 var Painting= require("./paintings");
+var Species=require("./species");
 var Cart= require("./cart");
 var exphbs  = require('express-handlebars');
 var session=require("express-session");
@@ -13,6 +14,8 @@ var app= express();
 var nodemailer = require('nodemailer');
 var cart;
 var arr=[];
+var mongodb=require("mongodb");
+var mongo=mongodb.MongoClient;
 var Order=require("./order")
 app.use(flash());
 app.use(express.static("public"));
@@ -48,8 +51,8 @@ var transporter = nodemailer.createTransport({
     secure: false,
     requireTLS: true,
   auth: {
-    user: 'khayatove@gmail.com',
-    pass: 'Maradona10'
+    user: 'scarfistry@gmail.com',
+    pass: 'M01098013054'
   }
 });
 
@@ -73,8 +76,8 @@ app.use(function(req, res, next){
 app.post("/mail", function (req, res) {
 
 	var mailOptions = {
-  from:  'khayatove@yahoo.com',
-  to: 'khayatove@yahoo.com',
+  from:  'scarfistry@gmail.com',
+  to: 'mai_naga@hotmail.com',
   subject: 'contact page',
   
   text: req.body.mssg +"\n"+"\n"+
@@ -85,6 +88,7 @@ app.post("/mail", function (req, res) {
   
   
 };
+
 // 1. Set up your server to make calls to PayPal
 // Add your client ID and secret
 //     var PAYPAL_CLIENT = 'AWNpqdTIYEeLLEqj0GBzp1TvGwONMmOH0TYIs7B7qYZV78AFHgCKew3j8EHWv5ysKJ83tkz9QXh9JGla';
@@ -137,7 +141,7 @@ transporter.sendMail(mailOptions, function(error, info){
     console.log(error);
   } else {
     console.log('Email sent: ' + info.response);
-    req.flash('mssg','Thank your message is sent successfully ');
+    req.flash('mssg','Thank your message is received successfully ');
   }
   
   res.redirect("/contact");
@@ -159,6 +163,16 @@ res.redirect("/check");
  // res.render("checkout.ejs",{bag:cart.generateArray(),price:cart.totalPrice,size:arr});
 
 });
+
+app.get("/admin",function(req,res,next){
+
+Order.find(function(err,docs){
+	res.render("admin.ejs",{orders:docs});
+	});
+ // res.render("checkout.ejs",{bag:cart.generateArray(),price:cart.totalPrice,size:arr});
+
+});
+
 
 	app.get("/tshirts",function(req,res){
 		
@@ -194,6 +208,7 @@ res.redirect("/check");
 	});
 	});
 
+
 	app.get("/scarves",function(req,res){
 		if(!req.session.cart){
 			totalQty=0;
@@ -204,9 +219,30 @@ res.redirect("/check");
 		
 		req.session.cart=cart;
 	 // var cart= (req.session.cart ? req.session.cart.length :0);
-	Scarves.find(function(err,docs){
-	res.render("scarves.ejs",{scarves:docs,totalQty:totalQty});
+	 
+	 // var docs2 = Species.find();
+	
+	
+	Scarves.find(function(err,doc){
+		 
+
+	res.render("scarves.ejs",{scarves:doc,totalQty:totalQty});
 	});
+	
+// async function run (res) {
+//   var resulting = await Scarves.find();
+//    var resulting2 = await Species.find();
+//    res.render("scarves.ejs",{scarves:resulting,species:resulting2,totalQty:totalQty});
+//    };
+// run(res);
+
+
+	
+	
+	
+
+	
+	
 	});
 	var size;
 	var coloring;
@@ -296,6 +332,7 @@ app.get("/add/:id",function(req,res){
 });
 
 app.post("/order",function(req,res,next){
+	
 	var order=new Order({
 		customer:req.body.name,
 		order:cart,
@@ -309,8 +346,8 @@ app.post("/order",function(req,res,next){
 	order.save(function(err,result){
 	req.flash('success','order placed successfully, you will be contacted soon ');
 		var mailOptions = {
-  from:  'khayatove@yahoo.com',
-  to: 'khayatove@yahoo.com',
+  from:  'scarfistry@gmail.com',
+  to: 'mai_naga@hotmail.com',
   subject: 'New order',
   
   text: "check the new order" +"\n"+"\n"+
@@ -331,7 +368,7 @@ transporter.sendMail(mailOptions, function(error, info){
   
   
 });
-
+	
 	req.session.cart=null;
 	cart=null;
 	res.redirect("/check");
@@ -347,8 +384,8 @@ app.post("/custom",function(req,res,next){
 	
 	
 		var mailOptions = {
-  from:  'khayatove@yahoo.com',
-  to: 'khayatove@yahoo.com',
+  from:  'scarfistry@gmail.com',
+  to: 'mai_naga@hotmail.com',
   subject: 'Custom order',
   // attachments:req.body.upload,
   	
@@ -423,6 +460,7 @@ app.get("/addpaint/:id",function(req,res){
 			 return res.redirect("/check");
 		}
 		cart.add(product,product.name+"","","");
+
 		req.session.cart=cart;
 		console.log(req.session.cart.totalQty);
 		console.log(product.name);
@@ -441,7 +479,7 @@ app.get("/addpaint/:id",function(req,res){
 
 
 
-
 app.listen(3000,function(){
 	console.log("hii");
 });
+

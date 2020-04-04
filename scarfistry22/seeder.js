@@ -2,6 +2,7 @@ var mongoose= require("mongoose");
 var Product= require("./products");
 var Scarves=require("./Scarves");
 var Paintings=require("./paintings");
+var Species=require("./species");
 console.log("ji");
 
 mongoose.connect('mongodb://localhost:27017/scarfistry',{
@@ -98,43 +99,108 @@ new Product({
 var scarves=
 [
 	new Scarves({
-	imagepath:"/cart_ejs_folder/p4.png",
-	name:"Sushi lover",
-	price:680
+	imagepath:"/sushi1.jpeg",
+	image2:"/sushi2.jpg",
+	name:"Sushi",
+	price:550
+}),
+
+	
+
+new Scarves({
+	imagepath:"/traveler.jpeg",
+	image2:"none",
+	name:"The traveler",
+	price:650
 }),
 
 new Scarves({
-	imagepath:"/cart_ejs_folder/p5.png",
-	name:"Halloween",
-	price:680
-}),
-
-new Scarves({
-	imagepath:"/cart_ejs_folder/p6.png",
+	imagepath:"/portrait1.jpeg",
+	image2:"none",
 	name:"Portrait",
-	price:680
+	price:650
+}),
+new Scarves({
+	imagepath:"/portrait2.jpeg",
+	image2:"none",
+	name:"Day dreamer",
+	price:650
+}),
+new Scarves({
+	imagepath:"/bee_eater1.jpeg",
+	image2:"/bee_eater2.jpeg",
+	name:"Bee eater",
+	price:750
+}),
+
+new Scarves({
+	imagepath:"/white_stroke1.jpg",
+	image2:"/white_stroke2.jpeg",
+	name:"White storke",
+	price:650
+}),
+
+new Scarves({
+	imagepath:"/egyptian_v1.jpeg",
+	image2:"/egyptianv2.jpeg",
+	name:"Egyptian vulture",
+	price:650
 })
 ];
+var species=
+[
+	new Species({
+	imagepath:"/bee_eater1.jpeg",
+	image2:"/bee_eater2.jpeg",
+	name:"Bee eater",
+	price:750
+}),
 
+new Species({
+	imagepath:"/white_stroke1.jpg",
+	image2:"/white_stroke2.jpeg",
+	name:"White storke",
+	price:650
+}),
+
+new Species({
+	imagepath:"/egyptian_v1.jpeg",
+	image2:"/egyptian_v2.jpeg",
+	name:"Egyptian vulture",
+	price:650
+})
+];
 var len =paintings.length;
 var len2=scarves.length;
-
+var len3=species.length;
 var done=0;
+
+async function run(){
+await scarves[0].save();
+await scarves[1].save();
+await scarves[2].save();
+await scarves[3].save();
+await scarves[4].save();
+await scarves[5].save();
+await scarves[6].save();
+
+}
+run();
 // for(var i=0;i<len2;i++){
 // 	scarves[i].save(function(err,res){
 
 // 	});
 // }
-for(var i=0;i<len;i++){
-	paintings[i].save(function(err,res){
-		console.log("hi");
-		done++;
-		if(done==len){
-			console.log("exit");
-			exit();
-		}
-	});
-	function exit(){
-		mongoose.disconnect();
-	}
-}
+// for(var i=0;i<len2;i++){
+// 	scarves[i].save(function(err,res){
+// 		console.log("hi");
+// 		done++;
+// 		if(done==len2){
+// 			console.log("exit");
+// 			exit();
+// 		}
+// 	});
+// 	function exit(){
+// 		mongoose.disconnect();
+// 	}
+// }

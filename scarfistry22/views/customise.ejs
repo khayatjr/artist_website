@@ -84,6 +84,24 @@ input:focus ~ label, textarea:focus ~ label, input:valid ~ label, textarea:valid
 }
 
 @media only screen and (max-width: 768px){
+
+
+ .item-1 {
+    z-index: 2;
+    opacity: 1;
+  background:url('/moral.png');
+  background-size:cover;
+  }
+.item-2{
+  background:url('/piece2.png');
+   background-size:cover;
+}
+.item-3{
+  background:url('/wearable.png');
+   background-size:cover;
+}
+  
+
   .order{
     margin-left: 20%;
 
@@ -444,13 +462,13 @@ document.getElementById('abc').style.display = "none";
 <br>
 <br>
 <br>
-<div class="carousel-wrapper" class="caro">
+<div class="carousel-wrapper">
   <span id="item-1"></span>
   <span id="item-2"></span>
   <span id="item-3"></span>
   <div class="carousel-item item-1">
     <!-- <h2>Item 1</h2> -->
-    <p>let your place speak with your identity</p>
+    <p>Make your place speak your identity with some mural art</p>
     <a class="arrow arrow-prev" href="#item-3"></a>
     <a class="arrow arrow-next" href="#item-2"></a>
   </div>
@@ -477,7 +495,69 @@ document.getElementById('abc').style.display = "none";
 
 
 
+<br>    
+<br>
+<br>  
+<br>  
+<div class="footer"  style=" background-color:  #1e4240 ; " >
+  <div class="di"> 
+    <img class="footimg" src="/cart_ejs_folder/media/sign2.png">
+    </div>
+    <div class=" icons">  
+     <a href="https://www.instagram.com/maielnaga" style="padding-right: 5px;">
+         <img  src="/instagram.png"
+         width=20" height="20">
+      </a>
+       <a href="https://www.youtube.com">
+         <img  src="/youtube.png"
+         width=20" height="20">
+      </a>
+       </div>
+<style type="text/css">
 
+
+@media (max-width: 980px) {
+.footimg{
+  /*padding-top: 24%;*/
+  padding-left: 3%;
+  width: 120px;
+  height: 120px;
+    
+  
+    
+}
+.di{
+
+  margin-left: 5%;
+  height: 20%;
+}
+
+
+ .icons{
+    margin-left: 0%;padding-bottom: 1%;
+     /*padding-top: 6px;*/
+    
+
+  }
+}
+
+
+  .footimg{
+
+margin-left: 44%; 
+padding-top: 2%;
+ width:10%;
+   height:10%;
+
+  }
+
+  .icons{
+    margin-left: 47%;padding-bottom: 1%;
+     padding-top: 6px;
+
+  }
+
+</style>
 
 <script>
   

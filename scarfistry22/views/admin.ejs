@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="/cart_ejs_folder/add_cart.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+      
+      
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Hi Mai!</title>
+  </head>
+  <body>
+        <div class="topnav" style=" padding-top:5px; margin-top:-5px; background-color:  #1e4240 ;" >
+  <img src="/cart_ejs_folder/media/sign2.png" width="20%" height="25%" style="padding-bottom: 20px; padding-left: 2.5%; padding-top: 10px; margin-right:20%; ">
+
+  
+ <div class="nav" id="myTopnav"style="float: right; padding-right: 5%;padding-top: 1%;" >
+    
+    <a href="/home" style="color: white">HOME</a>
+    <div class="dropdown"> <button class="btn" href="#shop.html">SHOP</button> 
+        
+  <div  class="dropdown-content" style="background-color: #1e4240;">
+    
+    <a href="/paintings">PAINTINGS</a>
+    <a href="/scarves">SCARVES</a>
+    <a href="/tshirts">T-SHIRTS</a>
+    <a href="/customise">CUSTOMIZE</a>
+    </div>
+
+
+</div>
+
+<a href="/contact" style="color: white">CONTACT</a>
+  
+   <a href="#" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+ </div>
+    
+ 
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Customer</th>
+            <th scope="col">Order</th>
+            <!-- <th scope="col">Quantity</th> -->
+            <th scope="col">Phone</th>
+            <th scope="col">Email</th>
+            <th scope="col">Address</th>
+            <th scope="col">Region</th>
+            <th scope="col">Status</th>
+            <!-- <th scope="col">Action</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <% var len = orders.length %>
+
+  
+    <% for(var i=0 ;i< len ;i++){%>
+   
+   
+          <tr>
+            
+            <td> <%= orders[i].customer %></td>
+              
+  
+   <td> 
+      <% var obj=  orders[i].order %>
+       <% var items=  obj.items %>
+       
+<%var result = []%>
+<%var s %>
+<%for(var j in items){%>
+<%s= j.replace(items[j].size,"")%>
+<%s=s.replace(items[j].color,"")%>
+<%= "Product: "+ s %>
+    
+<% if(items[j].color!==''){%>
+<br>  
+    <%= "color: "+ items[j].color%>
+    <%}%>
+    <% if(items[j].size!==''){%>
+    <br>  
+    <%= "Size: "+  items[j].size%>
+    <%}%>
+    <br>  
+    <%= "Quantity: "+ items[j].qty%>
+    <br>  
+    <br> 
+      <%}%>
+    </td>
+          
+
+     <td>0<%= orders[i].phone%></td>
+            <td><%= orders[i].email%></td>
+            <td><%= orders[i].address %></td>
+            <td><%= orders[i].region %></td>
+            <td><%= orders[i].status %></td>
+            <!-- <td> -->
+              
+              <!-- <button type="button" class="btn btn-success">Done</button> -->
+            
+            <!-- </td> -->
+          </tr>
+          <% }%>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+         <script>
+
+                
+    
+// When the user scrolls the page, execute myFunction 
+
+
+    function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "nav") {
+    x.className += " responsive";
+  } else {
+    x.className = "nav";
+  }
+}
+
+</script>
+<style type="text/css">
+  
+.container {
+  padding: 2rem 0rem;
+}
+
+h4 {
+  margin: 2rem 0rem 1rem;
+}
+
+.table-image {
+  td, th {
+    vertical-align: middle;
+  }
+}
+
+
+</style>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
