@@ -473,8 +473,8 @@ app.get("/addpaint/:id",function(req,res){
 
 
 
-app.listen(5000,function(){
+app.listen(3000,function(){
 	console.log("hii");
-	console.log("Express server listening on port %d", app.address().port);
+	
 });
 
