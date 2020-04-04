@@ -24,7 +24,7 @@ app.set("views", "views")
 
 var bodyparser= require("body-parser");
 // mongodb://localhost:27017/scarfistry
-mongoose.connect('mongodb+srv://Youssef:<password>@cluster0-ekeib.mongodb.net/test?retryWrites=true&w=majority',{
+mongoose.connect('mongodb+srv://Youssef:<Ahmedghanemsultan>@cluster0-ekeib.mongodb.net/test?retryWrites=true&w=majority',{
     useNewUrlParser: true,
     useUnifiedTopology: true 
 })
