@@ -109,7 +109,7 @@ app.post("/size/:id", function (req, res) {
 	MongoClient.connect(uri, async function(err, db) {
   if (err) throw err;
   var dbo = db.db("scarfistry");
-  let result = await dbo.collection("products").findOne({ _id : ObjectId(productId) };
+  let result = await dbo.collection("products").findOne({ _id : ObjectId(productId) });
    let x=[];
    x.push(result);
    console.log(result.price);
