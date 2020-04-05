@@ -66,7 +66,7 @@ app.get("/contact",function(req,res){
 		req.session.cart=cart;
 		
 		if(!req.session.cart){
-			totalQty=1;
+			totalQty=0;
 		}
 		else{
 			totalQty=req.session.cart.totalQty;
