@@ -37,10 +37,21 @@ res.render("new_home.ejs");
 
 	
 });
- app.get("/contact",function(req,res){
+ app.use(function(req, res, next){
+  res.locals.messages = req.flash();
+  next();
+});
+ app.get("/home",function(req,res){
+	console.log("AYWAAAAA");
+	res.render("new_home.ejs");
+	
+});
+
+app.get("/contact",function(req,res){
 	res.render("contact.ejs");
 	
 });
+
 // mongoose.connect('mongodb://Youssef:q6lq677vzble1CNq@cluster0-ekeib.mongodb.net/test?retryWrites=true&w=majority',{
 // 	useNewUrlParser:true,
 // 	useCreateIndex:true
@@ -86,10 +97,8 @@ app.use(function(req,res,next){
 	res.locals.session=req.session;
 	next();
 });
-app.use(function(req, res, next){
-  res.locals.messages = req.flash();
-  next();
-});
+
+
 app.post("/mail", function (req, res) {
 
 	var mailOptions = {
@@ -304,12 +313,6 @@ app.get("/check",function(req,res,next){
 
 	
 });
-app.get("/home",function(req,res){
-	console.log("AYWAAAAA");
-	res.render("new_home.ejs");
-	
-});
-
 
 
 app.get("/customise",function(req,res){
