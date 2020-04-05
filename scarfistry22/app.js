@@ -25,7 +25,7 @@ var bodyparser= require("body-parser");
 // mongodb://localhost:27017/scarfistry
 
 
-mongoose.connect('mongodb+srv://Youssef:6dXDHpTVAHJrJWLT@cluster0-ekeib.mongodb.net/test?retryWrites=true&w=majorityry');
+mongoose.connect('mongodb+srv://Youssef:1234@cluster0-ekeib.mongodb.net/test?retryWrites=true&w=majority');
 // const UserSchema = new mongoose.Schema({
 //     name :String
         
