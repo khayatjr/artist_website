@@ -145,7 +145,7 @@ transporter.sendMail(mailOptions, function(error, info){
 });
 
 app.get("/",function(req,res){
-res.render("new_home.ejs");
+res.render("new_home.html");
 	
 });
 app.get("/remove/:id",function(req,res,next){
