@@ -5,14 +5,17 @@ var Scarves= require("./scarves");
 var Painting= require("./paintings");
 var Species=require("./species");
 var Cart= require("./cart");
+var exphbs  = require('express-handlebars');
 var session=require("express-session");
 var mongostore= require("connect-mongo")(session);
+const { check, validationResult } = require('express-validator/check');
 var flash = require('connect-flash');
 var app= express();
 var nodemailer = require('nodemailer');
 var cart;
 var arr=[];
 var mongodb=require("mongodb");
+var mongo=mongodb.MongoClient;
 var Order=require("./order")
 app.use(flash());
 app.use(express.static("public"));
@@ -21,11 +24,8 @@ app.use(express.static("public"));
 
 
 var bodyparser= require("body-parser");
-
 // mongodb://localhost:27017/scarfistry
-
-
-mongoose.connect('mongodb://localhost:27017/scarfistry',{
+mongoose.connect('mongodb+srv://Youssef:<password>@cluster0-ekeib.mongodb.net/test?retryWrites=true&w=majority',{
     useNewUrlParser: true,
     useUnifiedTopology: true 
 })
@@ -477,6 +477,5 @@ app.get("/addpaint/:id",function(req,res){
 
 app.listen(3000,function(){
 	console.log("hii");
-	
 });
 
