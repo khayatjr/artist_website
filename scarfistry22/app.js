@@ -37,6 +37,18 @@ res.render("new_home.ejs");
 
 	
 });
+ app.use(bodyparser.urlencoded({extended: true}));
+app.use(session({secret:"secret",
+	resave:false,
+	saveUninitialized:false,
+	store: new mongostore({mongooseConnection: mongoose.connection}),
+	cookie:{maxAge: 180*60*1000}	
+}));
+app.use(function(req,res,next){
+	res.locals.session=req.session;
+	next();
+});
+
  app.use(function(req, res, next){
   res.locals.messages = req.flash();
   next();
@@ -86,17 +98,6 @@ var transporter = nodemailer.createTransport({
 
 
 
-app.use(bodyparser.urlencoded({extended: true}));
-app.use(session({secret:"secret",
-	resave:false,
-	saveUninitialized:false,
-	store: new mongostore({mongooseConnection: mongoose.connection}),
-	cookie:{maxAge: 180*60*1000}	
-}));
-app.use(function(req,res,next){
-	res.locals.session=req.session;
-	next();
-});
 
 
 app.post("/mail", function (req, res) {
