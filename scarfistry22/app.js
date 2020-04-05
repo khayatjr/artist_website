@@ -61,7 +61,6 @@ app.get("/contact",function(req,res){
 	res.render("contact.ejs");
 	
 });
-client.connect();
  app.get("/tshirts",function(req,res){
 		req.session.cart=cart;
 		
@@ -71,13 +70,14 @@ client.connect();
 		else{
 			totalQty=req.session.cart.totalQty;
 		}
-		
+		client.connect(err => {
 		 const collection = client.db("scarfistry").collection("products");
 	 // var cart= (req.session.cart ? req.session.cart.length :0);
 	collection.find(function(err,docs){
 	res.render("shirts.ejs",{products:docs,totalQty:totalQty});
 	});
-	
+	client.close();
+	});
 
   // perform actions on the collection object
   
