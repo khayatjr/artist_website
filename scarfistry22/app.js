@@ -292,7 +292,7 @@ app.get("/check",function(req,res,next){
 	
 });
 app.get("/home",function(req,res){
-	console.log("AYWAAAAA")
+	console.log("AYWAAAAA");
 	res.render("new_home.ejs");
 	
 });
