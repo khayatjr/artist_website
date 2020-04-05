@@ -84,7 +84,7 @@ MongoClient.connect(uri, function(err, db) {
   });
 });
 		
-	res.render("shirts.ejs",{products:docs,totalQty:totalQty});
+	// res.render("shirts.ejs",{products:docs,totalQty:totalQty});
 
 	
 	
