@@ -27,11 +27,7 @@ var bodyparser= require("body-parser");
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://Youssef:q6lq677vzble1CNq@cluster0-ekeib.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
-client.connect(err => {
-  console.log(err.message);
-  // perform actions on the collection object
-  
-});
+client.connect();
 
 
 // mongoose.connect('mongodb://Youssef:q6lq677vzble1CNq@cluster0-ekeib.mongodb.net/test?retryWrites=true&w=majority',{
@@ -296,6 +292,7 @@ app.get("/check",function(req,res,next){
 	
 });
 app.get("/home",function(req,res){
+	console.log("AYWAAAAA")
 	res.render("new_home.ejs");
 	
 });
