@@ -24,7 +24,7 @@ var bodyparser= require("body-parser");
 
 // mongodb://localhost:27017/scarfistry
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://Youssef:q6lq677vzble1CNq@cluster0-ekeib.mongodb.net/test?retryWrites=true&w=majority";
+const uri = "mongodb://Youssef:q6lq677vzble1CNq@cluster0-ekeib.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true,useUnifiedTopology: true  });
 
   console.log("hey");
@@ -61,6 +61,7 @@ app.get("/contact",function(req,res){
 	res.render("contact.ejs");
 	
 });
+
  app.get("/tshirts",function(req,res){
 		req.session.cart=cart;
 		
