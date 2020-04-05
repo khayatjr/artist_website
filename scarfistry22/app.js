@@ -112,7 +112,7 @@ app.post("/size/:id", function (req, res) {
   let result = await dbo.collection("products").findOne({ _id : productId });
    let x=[];
    x.push(result);
-   console.log(result.price);
+  
     	cart.add(result,result.name + size + coloring,size,coloring);
 		req.session.cart=cart;
      res.redirect("/tshirts");
