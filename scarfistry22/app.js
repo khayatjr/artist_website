@@ -31,9 +31,7 @@ client.connect(err => {
   console.log('worked');
   // perform actions on the collection object
   
-}).then(() =>{
-		console.log('DB connected');
-	}).catch (err =>{
+}).catch (err =>{
 		console.log('Error:',err.message);
 	});
 
