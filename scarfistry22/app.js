@@ -30,6 +30,7 @@ const client = new MongoClient(uri, { useNewUrlParser: true });
 client.connect(err => {
   app.get("/",function(req,res){
 res.render("new_home.ejs");
+client.close();
 	
 });
   // perform actions on the collection object
