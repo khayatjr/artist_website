@@ -184,6 +184,7 @@ Order.find(function(err,docs){
 
 });
 
+client.connect(err => {
 
 	app.get("/tshirts",function(req,res){
 		
@@ -198,6 +199,7 @@ Order.find(function(err,docs){
 	 // var cart= (req.session.cart ? req.session.cart.length :0);
 	Product.find(function(err,docs){
 	res.render("shirts.ejs",{products:docs,totalQty:totalQty});
+	});
 	});
 	});
 
