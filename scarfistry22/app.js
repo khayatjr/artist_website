@@ -95,6 +95,48 @@ MongoClient.connect(uri, async function(err, db) {
   // perform actions on the collection object
   
 });
+	var size;
+	var coloring;
+app.post("/size/:id", function (req, res) {
+	size=req.body.example;
+	coloring=req.body.coloring;
+	arr.push(size);
+	console.log(size);
+
+   var productId=req.params.id;
+	cart= new Cart(req.session.cart ? req.session.cart :{});
+
+	MongoClient.connect(uri, async function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("scarfistry");
+  let result = await dbo.collection("products").findById(productId);
+   let x=[];
+   x.push(result);
+   console.log(result.price);
+    	cart.add(result,result.name + size + coloring,size,coloring);
+		req.session.cart=cart;
+     res.redirect("/tshirts");
+     
+ 
+});
+	
+
+	// Product.findById(productId,function(err,product){
+	// 	if(err){
+	// 		return res.redirect("/check");
+	// 	}
+	// 	cart.add(product,product.name + size + coloring,size,coloring);
+	// 	req.session.cart=cart;
+	// 	console.log(req.session.cart.totalQty);
+	// 	console.log(product.name);
+	// 	Product.find(function(err,docs){
+
+	// res.redirect("/tshirts");
+	// });
+		
+		
+	// });
+});
 
 // mongoose.connect('mongodb://Youssef:q6lq677vzble1CNq@cluster0-ekeib.mongodb.net/test?retryWrites=true&w=majority',{
 // 	useNewUrlParser:true,
@@ -290,48 +332,6 @@ Order.find(function(err,docs){
 	
 	
 	});
-	var size;
-	var coloring;
-app.post("/size/:id", function (req, res) {
-	size=req.body.example;
-	coloring=req.body.coloring;
-	arr.push(size);
-	console.log(size);
-
-   var productId=req.params.id;
-	cart= new Cart(req.session.cart ? req.session.cart :{});
-
-	MongoClient.connect(uri, async function(err, db) {
-  if (err) throw err;
-  var dbo = db.db("scarfistry");
-  let result = await dbo.collection("products").findById(productId);
-   let x=[];
-   x.push(result);
-   console.log(result.name);
-    	cart.add(result,result.name + size + coloring,size,coloring);
-		req.session.cart=cart;
-     res.redirect("/tshirts");
-     
- console.log(result.name);
-});
-	
-
-	// Product.findById(productId,function(err,product){
-	// 	if(err){
-	// 		return res.redirect("/check");
-	// 	}
-	// 	cart.add(product,product.name + size + coloring,size,coloring);
-	// 	req.session.cart=cart;
-	// 	console.log(req.session.cart.totalQty);
-	// 	console.log(product.name);
-	// 	Product.find(function(err,docs){
-
-	// res.redirect("/tshirts");
-	// });
-		
-		
-	// });
-});
 
 
 
