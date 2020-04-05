@@ -27,10 +27,14 @@ var bodyparser= require("body-parser");
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://Youssef:q6lq677vzble1CNq@cluster0-ekeib.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
-client.connect().catch (err =>{
-		console.log('Error:',err.message);
-	});
-
+client.connect(err => {
+  app.get("/",function(req,res){
+res.render("new_home.ejs");
+	
+});
+  // perform actions on the collection object
+  client.close();
+});
 
 // mongoose.connect('mongodb://Youssef:q6lq677vzble1CNq@cluster0-ekeib.mongodb.net/test?retryWrites=true&w=majority',{
 // 	useNewUrlParser:true,
@@ -156,13 +160,10 @@ transporter.sendMail(mailOptions, function(error, info){
 });
 });
 
-app.get("/",function(req,res){
-res.render("new_home.ejs");
-console.log("AYWAA");
+// app.get("/",function(req,res){
+// res.render("new_home.ejs");
 	
-}).catch (err =>{
-		console.log('Error:',err.message);
-	});
+// });
 app.get("/remove/:id",function(req,res,next){
 
 var productId=req.params.id;
