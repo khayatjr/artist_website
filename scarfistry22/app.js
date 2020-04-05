@@ -76,10 +76,8 @@ app.get("/contact",function(req,res){
 		 
 	 // var cart= (req.session.cart ? req.session.cart.length :0);
 	collection.find(function(err,docs){
-		console.log(docs);
+		console.log(err.message);
 	res.render("shirts.ejs",{products:docs,totalQty:totalQty});
-	}).catch (err =>{
-		console.log('Error:',err.message);
 	});
 	
 	});
