@@ -26,10 +26,26 @@ var bodyparser= require("body-parser");
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://Youssef:q6lq677vzble1CNq@cluster0-ekeib.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
-client.connect(err => {
+
   console.log("hey");
+  app.get("/tshirts",function(req,res){
+		
+		client.connect(err => {
+		req.session.cart=cart;
+		if(!req.session.cart){
+			totalQty=0;
+		}
+		else{
+			totalQty=req.session.cart.totalQty;
+		}
+	 // var cart= (req.session.cart ? req.session.cart.length :0);
+	Product.find(function(err,docs){
+	res.render("shirts.ejs",{products:docs,totalQty:totalQty});
+	});
+	});
+
   // perform actions on the collection object
-  client.close();
+  
 });
 
  app.get("/",function(req,res){
@@ -202,22 +218,7 @@ Order.find(function(err,docs){
 
 
 
-	app.get("/tshirts",function(req,res){
-		
-		
-		req.session.cart=cart;
-		if(!req.session.cart){
-			totalQty=0;
-		}
-		else{
-			totalQty=req.session.cart.totalQty;
-		}
-	 // var cart= (req.session.cart ? req.session.cart.length :0);
-	Product.find(function(err,docs){
-	res.render("shirts.ejs",{products:docs,totalQty:totalQty});
-	});
-	});
-
+	
 
 	app.get("/paintings",function(req,res){
 		
