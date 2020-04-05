@@ -25,7 +25,7 @@ var bodyparser= require("body-parser");
 // mongodb://localhost:27017/scarfistry
 
 
-mongoose.connect('mongodb+srv://Youssef:<Ahmedghanemsultan>@cluster0-ekeib.mongodb.net/test?retryWrites=true&w=majorityry',{
+mongoose.connect('mongodb+srv://Youssef:<1234>@cluster0-ekeib.mongodb.net/test?retryWrites=true&w=majorityry',{
     useNewUrlParser: true,
     useUnifiedTopology: true 
 })
@@ -145,7 +145,7 @@ transporter.sendMail(mailOptions, function(error, info){
 });
 
 app.get("/",function(req,res){
-res.render("new_home.html");
+res.render("new_home.ejs");
 	
 });
 app.get("/remove/:id",function(req,res,next){
