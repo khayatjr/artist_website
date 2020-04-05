@@ -78,6 +78,8 @@ app.get("/contact",function(req,res){
 	collection.find(function(err,docs){
 		console.log(docs);
 	res.render("shirts.ejs",{products:docs,totalQty:totalQty});
+	}).catch (err =>{
+		console.log('Error:',err.message);
 	});
 	
 	});
