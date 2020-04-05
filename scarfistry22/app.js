@@ -31,7 +31,7 @@ client.connect(err => {
   console.log('worked');
   // perform actions on the collection object
   
-});
+
 
 
 // mongoose.connect('mongodb://Youssef:q6lq677vzble1CNq@cluster0-ekeib.mongodb.net/test?retryWrites=true&w=majority',{
@@ -487,7 +487,7 @@ app.get("/addpaint/:id",function(req,res){
 	
 });
 
-
+});
 
 app.listen(3000,function(){
 	console.log("hii");
