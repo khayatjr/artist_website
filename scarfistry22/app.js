@@ -39,7 +39,7 @@ res.render("new_home.ejs");
 // 	}).catch (err =>{
 // 		console.log('Error:',err.message);
 // 	});
-// const UserSchema = new mongoose.Schema({
+// const UserSchema = new mongoose.Schema({F
 //     name :String
         
 //     });
@@ -179,7 +179,7 @@ Order.find(function(err,docs){
 
 });
 
-client.connect(err => {
+
 
 	app.get("/tshirts",function(req,res){
 		
@@ -196,7 +196,7 @@ client.connect(err => {
 	res.render("shirts.ejs",{products:docs,totalQty:totalQty});
 	});
 	});
-	});
+
 
 	app.get("/paintings",function(req,res){
 		
