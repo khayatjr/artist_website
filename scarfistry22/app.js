@@ -79,7 +79,7 @@ app.get("/contact",function(req,res){
 		console.log(docs);
 	res.render("shirts.ejs",{products:docs,totalQty:totalQty});
 	});
-	client.close();
+	
 	});
 
   // perform actions on the collection object
