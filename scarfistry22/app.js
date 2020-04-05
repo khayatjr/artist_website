@@ -8,7 +8,7 @@ var Cart= require("./cart");
 var session=require("express-session");
 var mongostore= require("connect-mongo")(session);
 var flash = require('connect-flash');
-
+var app= express();
 var nodemailer = require('nodemailer');
 var cart;
 var arr=[];
@@ -22,7 +22,7 @@ app.use(express.static("public"));
 
 var bodyparser= require("body-parser");
 // mongodb://localhost:27017/scarfistry
-mongoose.connect('mongodb+srv://Youssef:<Ahmedghanemsultan>@cluster0-ekeib.mongodb.net/test?retryWrites=true&w=majority',{
+mongoose.connect('mongodb://localhost:27017/scarfistry',{
     useNewUrlParser: true,
     useUnifiedTopology: true 
 })
