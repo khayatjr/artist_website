@@ -24,7 +24,7 @@ var bodyparser= require("body-parser");
 
 // mongodb://localhost:27017/scarfistry
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb://Youssef:q6lq677vzble1CNq@cluster0-ekeib.mongodb.net/test?retryWrites=true&w=majority";
+const uri = "mongodb+srv://Youssef:q6lq677vzble1CNq@cluster0-ekeib.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true,useUnifiedTopology: true  });
 
   console.log("hey");
@@ -71,9 +71,9 @@ app.get("/contact",function(req,res){
 			totalQty=req.session.cart.totalQty;
 		}
 		client.connect(err => {
-		
+		 const collection = client.db("scarfistry").collection("products");
 	 // var cart= (req.session.cart ? req.session.cart.length :0);
-	Product.find(function(err,docs){
+	collection.find(function(err,docs){
 	res.render("shirts.ejs",{products:docs,totalQty:totalQty});
 	});
 	});
