@@ -41,7 +41,7 @@ res.render("new_home.ejs");
 app.use(session({secret:"secret",
 	resave:false,
 	saveUninitialized:false,
-	store: new mongostore({mongooseConnection: mongoose.connection}),
+	// store: new mongostore({mongooseConnection: mongoose.connection}),
 	cookie:{maxAge: 180*60*1000}	
 }));
 app.use(function(req,res,next){
