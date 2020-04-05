@@ -77,9 +77,9 @@ app.get("/contact",function(req,res){
 MongoClient.connect(uri, function(err, db) {
   if (err) throw err;
   var dbo = db.db("scarfistry");
-  dbo.collection("products").findOne({}, function(err, result) {
+  dbo.collection("products").findOne({}, async function(err, result) {
     if (err) throw err;
-    console.log(result.name);
+   await console.log(result.name);
      res.render("shirts.ejs",{products:result,totalQty:totalQty});
     db.close();
   });
