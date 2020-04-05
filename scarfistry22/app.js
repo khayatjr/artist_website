@@ -24,16 +24,29 @@ var bodyparser= require("body-parser");
 
 // mongodb://localhost:27017/scarfistry
 
-
-mongoose.connect('mongodb://Youssef:q6lq677vzble1CNq@cluster0-ekeib.mongodb.net/test?retryWrites=true&w=majority',{
-	useNewUrlParser:true,
-	useCreateIndex:true
-
-	}).then(() =>{
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://Youssef:q6lq677vzble1CNq@cluster0-ekeib.mongodb.net/test?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect(err => {
+  console.log('worked');
+  // perform actions on the collection object
+  
+}).then(() =>{
 		console.log('DB connected');
 	}).catch (err =>{
 		console.log('Error:',err.message);
 	});
+
+
+// mongoose.connect('mongodb://Youssef:q6lq677vzble1CNq@cluster0-ekeib.mongodb.net/test?retryWrites=true&w=majority',{
+// 	useNewUrlParser:true,
+// 	useCreateIndex:true
+
+// 	}).then(() =>{
+// 		console.log('DB connected');
+// 	}).catch (err =>{
+// 		console.log('Error:',err.message);
+// 	});
 // const UserSchema = new mongoose.Schema({
 //     name :String
         
