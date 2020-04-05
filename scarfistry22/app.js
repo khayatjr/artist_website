@@ -27,7 +27,9 @@ var bodyparser= require("body-parser");
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://Youssef:q6lq677vzble1CNq@cluster0-ekeib.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
-client.connect();
+client.connect().catch (err =>{
+		console.log('Error:',err.message);
+	});
 
 
 // mongoose.connect('mongodb://Youssef:q6lq677vzble1CNq@cluster0-ekeib.mongodb.net/test?retryWrites=true&w=majority',{
@@ -156,8 +158,11 @@ transporter.sendMail(mailOptions, function(error, info){
 
 app.get("/",function(req,res){
 res.render("new_home.ejs");
+console.log("AYWAA");
 	
-});
+}).catch (err =>{
+		console.log('Error:',err.message);
+	});
 app.get("/remove/:id",function(req,res,next){
 
 var productId=req.params.id;
