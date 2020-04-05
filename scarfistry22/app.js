@@ -74,7 +74,7 @@ app.get("/contact",function(req,res){
 	
 		 
 	 // var cart= (req.session.cart ? req.session.cart.length :0);
-MongoClient.connect(url, function(err, db) {
+MongoClient.connect(uri, function(err, db) {
   if (err) throw err;
   var dbo = db.db("scarfistry");
   dbo.collection("products").findOne({}, function(err, result) {
