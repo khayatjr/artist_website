@@ -29,15 +29,16 @@ const client = new MongoClient(uri, { useNewUrlParser: true });
 
   console.log("hey");
   app.get("/tshirts",function(req,res){
-		
-		client.connect(err => {
 		req.session.cart=cart;
+		
 		if(!req.session.cart){
 			totalQty=0;
 		}
 		else{
 			totalQty=req.session.cart.totalQty;
 		}
+		client.connect(err => {
+		
 	 // var cart= (req.session.cart ? req.session.cart.length :0);
 	Product.find(function(err,docs){
 	res.render("shirts.ejs",{products:docs,totalQty:totalQty});
