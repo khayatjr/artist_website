@@ -80,11 +80,12 @@ MongoClient.connect(uri, function(err, db) {
   dbo.collection("products").findOne({}, function(err, result) {
     if (err) throw err;
     console.log(result.name);
+     res.render("shirts.ejs",{products:result,totalQty:totalQty});
     db.close();
   });
 });
 		
-	// res.render("shirts.ejs",{products:docs,totalQty:totalQty});
+	
 
 	
 	
