@@ -23,7 +23,10 @@ app.use(express.static("public"));
 var bodyparser= require("body-parser");
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 // mongodb://localhost:27017/scarfistry
+=======
+>>>>>>> parent of 97f0c09... deployment
 =======
 >>>>>>> parent of 97f0c09... deployment
 =======
