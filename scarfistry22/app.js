@@ -24,26 +24,26 @@ var bodyparser= require("body-parser");
 
 // mongodb://localhost:27017/scarfistry
 
-// const MongoClient = require('mongodb').MongoClient;
-// const uri = "//localhost:27017/scarfistry";
-// const client = new MongoClient(uri, { useNewUrlParser: true });
-// client.connect(err => {
+const MongoClient = require('mongodb').MongoClient;
+const uri = "//localhost:27017/scarfistry";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect(err => {
 //   app.get("/",function(req,res){
 // res.render("new_home.ejs");
 	
 // });
-//   // perform actions on the collection object
-//  });
+  // perform actions on the collection object
+ });
 
-mongoose.connect('//localhost:27017/scarfistry',{
-	useNewUrlParser:true,
-	useCreateIndex:true
+// mongoose.connect('mongodb://Youssef:q6lq677vzble1CNq@cluster0-ekeib.mongodb.net/test?retryWrites=true&w=majority',{
+// 	useNewUrlParser:true,
+// 	useCreateIndex:true
 
-	}).then(() =>{
-		console.log('DB connected');
-	}).catch (err =>{
-		console.log('Error:',err.message);
-	});
+// 	}).then(() =>{
+// 		console.log('DB connected');
+// 	}).catch (err =>{
+// 		console.log('Error:',err.message);
+// 	});
 // const UserSchema = new mongoose.Schema({
 //     name :String
         
@@ -159,10 +159,10 @@ transporter.sendMail(mailOptions, function(error, info){
 });
 });
 
-app.get("/",function(req,res){
-res.render("new_home.ejs");
+// app.get("/",function(req,res){
+// res.render("new_home.ejs");
 	
-});
+// });
 app.get("/remove/:id",function(req,res,next){
 
 var productId=req.params.id;
