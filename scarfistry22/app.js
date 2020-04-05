@@ -28,10 +28,7 @@ const MongoClient = require('mongodb').MongoClient;
 const uri = "//localhost:27017/scarfistry";
 const client = new MongoClient(uri, { useNewUrlParser: true });
 client.connect(err => {
-//   app.get("/",function(req,res){
-// res.render("new_home.ejs");
-	
-// });
+ 
   // perform actions on the collection object
  });
 
@@ -159,10 +156,10 @@ transporter.sendMail(mailOptions, function(error, info){
 });
 });
 
-// app.get("/",function(req,res){
-// res.render("new_home.ejs");
+app.get("/",function(req,res){
+res.render("new_home.ejs");
 	
-// });
+});
 app.get("/remove/:id",function(req,res,next){
 
 var productId=req.params.id;
