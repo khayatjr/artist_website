@@ -71,18 +71,18 @@ app.get("/contact",function(req,res){
 		else{
 			totalQty=req.session.cart.totalQty;
 		}
-		client.connect(err => {
-		 const collection = client.db("scarfistry").collection("products");
-		 console.log(collection.findById('5e8a08371c9d440000e3ee35').price);
-		 
-	 // var cart= (req.session.cart ? req.session.cart.length :0);
-	collection.find(function(err,docs){
-		if(err){
-			console.log('ERROR');
-		}
-		else{
+	MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("scarfistry");
+  dbo.collection("products").findOne({}, function(err, result) {
+    if (err) throw err;
+    console.log(result.name);
+    db.close();
+  });
+});
+		
 	res.render("shirts.ejs",{products:docs,totalQty:totalQty});
-}
+
 	});
 	
 	});
