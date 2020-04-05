@@ -74,15 +74,15 @@ app.get("/contact",function(req,res){
 	
 		 
 	 // var cart= (req.session.cart ? req.session.cart.length :0);
-MongoClient.connect(uri, function(err, db) {
+MongoClient.connect(uri, async function(err, db) {
   if (err) throw err;
   var dbo = db.db("scarfistry");
-  dbo.collection("products").findOne({}, async function(err, result) {
+  let result = await dbo.collection("products").findOne();
     if (err) throw err;
-   await console.log(result.name);
+   console.log(result.name);
      res.render("shirts.ejs",{products:result,totalQty:totalQty});
-    db.close();
-  });
+     
+ 
 });
 		
 	
