@@ -79,8 +79,9 @@ app.get("/contact",function(req,res){
 		if(err){
 			console.log('ERROR');
 		}
-		
+		else{
 	res.render("shirts.ejs",{products:docs,totalQty:totalQty});
+}
 	});
 	
 	});
