@@ -25,7 +25,7 @@ var bodyparser= require("body-parser");
 // mongodb://localhost:27017/scarfistry
 
 const MongoClient = require('mongodb').MongoClient;
-const uri = "//localhost:27017/scarfistry";
+const uri = "//localhost:27017/ah";
 const client = new MongoClient(uri, { useNewUrlParser: true });
 client.connect(err => {
   app.get("/",function(req,res){
