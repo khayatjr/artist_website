@@ -28,7 +28,7 @@ const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://Youssef:q6lq677vzble1CNq@cluster0-ekeib.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
 client.connect(err => {
-  console.log('worked');
+  console.log(err.message);
   // perform actions on the collection object
   
 });
