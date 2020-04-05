@@ -24,18 +24,18 @@ var bodyparser= require("body-parser");
 
 // mongodb://localhost:27017/scarfistry
 
-const MongoClient = require('mongodb').MongoClient;
-const uri = "//localhost:27017/ah";
-const client = new MongoClient(uri, { useNewUrlParser: true });
-client.connect(err => {
-  app.get("/",function(req,res){
+// const MongoClient = require('mongodb').MongoClient;
+// const uri = "//localhost:27017/ah";
+// const client = new MongoClient(uri, { useNewUrlParser: true });
+// client.connect(err => {
+ 
+//   // perform actions on the collection object
+//  });
+ app.get("/",function(req,res){
 res.render("new_home.ejs");
-client.close();
+// client.close();
 	
 });
-  // perform actions on the collection object
- });
-
 // mongoose.connect('mongodb://Youssef:q6lq677vzble1CNq@cluster0-ekeib.mongodb.net/test?retryWrites=true&w=majority',{
 // 	useNewUrlParser:true,
 // 	useCreateIndex:true
