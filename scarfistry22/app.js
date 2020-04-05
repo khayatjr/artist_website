@@ -71,7 +71,10 @@ app.get("/contact",function(req,res){
 		else{
 			totalQty=req.session.cart.totalQty;
 		}
-	MongoClient.connect(url, function(err, db) {
+	
+		 
+	 // var cart= (req.session.cart ? req.session.cart.length :0);
+MongoClient.connect(url, function(err, db) {
   if (err) throw err;
   var dbo = db.db("scarfistry");
   dbo.collection("products").findOne({}, function(err, result) {
@@ -83,9 +86,9 @@ app.get("/contact",function(req,res){
 		
 	res.render("shirts.ejs",{products:docs,totalQty:totalQty});
 
-	});
 	
-	});
+	
+	
 
   // perform actions on the collection object
   
