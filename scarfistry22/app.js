@@ -73,7 +73,7 @@ app.get("/contact",function(req,res){
 		}
 		client.connect(err => {
 		 const collection = client.db("scarfistry").collection("products");
-		 console.log(collection);
+		 
 	 // var cart= (req.session.cart ? req.session.cart.length :0);
 	collection.find(function(err,docs){
 		console.log(docs);
