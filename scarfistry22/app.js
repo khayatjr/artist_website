@@ -31,9 +31,7 @@ client.connect(err => {
   console.log('worked');
   // perform actions on the collection object
   
-}).catch (err =>{
-		console.log('Error:',err.message);
-	});
+});
 
 
 // mongoose.connect('mongodb://Youssef:q6lq677vzble1CNq@cluster0-ekeib.mongodb.net/test?retryWrites=true&w=majority',{
