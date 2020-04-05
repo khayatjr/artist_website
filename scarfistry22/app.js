@@ -28,26 +28,7 @@ const uri = "mongodb+srv://Youssef:q6lq677vzble1CNq@cluster0-ekeib.mongodb.net/t
 const client = new MongoClient(uri, { useNewUrlParser: true });
 
   console.log("hey");
-  app.get("/tshirts",function(req,res){
-		req.session.cart=cart;
-		
-		if(!req.session.cart){
-			totalQty=0;
-		}
-		else{
-			totalQty=req.session.cart.totalQty;
-		}
-		client.connect(err => {
-		
-	 // var cart= (req.session.cart ? req.session.cart.length :0);
-	Product.find(function(err,docs){
-	res.render("shirts.ejs",{products:docs,totalQty:totalQty});
-	});
-	});
 
-  // perform actions on the collection object
-  
-});
 
  app.get("/",function(req,res){
 res.render("new_home.ejs");
@@ -79,6 +60,26 @@ app.use(function(req,res,next){
 app.get("/contact",function(req,res){
 	res.render("contact.ejs");
 	
+});
+ app.get("/tshirts",function(req,res){
+		req.session.cart=cart;
+		
+		if(!req.session.cart){
+			totalQty=0;
+		}
+		else{
+			totalQty=req.session.cart.totalQty;
+		}
+		client.connect(err => {
+		
+	 // var cart= (req.session.cart ? req.session.cart.length :0);
+	Product.find(function(err,docs){
+	res.render("shirts.ejs",{products:docs,totalQty:totalQty});
+	});
+	});
+
+  // perform actions on the collection object
+  
 });
 
 // mongoose.connect('mongodb://Youssef:q6lq677vzble1CNq@cluster0-ekeib.mongodb.net/test?retryWrites=true&w=majority',{
