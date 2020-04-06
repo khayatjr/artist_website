@@ -527,7 +527,7 @@ app.get("/addpaint/:id",function(req,res){
   
     	cart.add(result,result.name," "," ");
 		req.session.cart=cart;
-     res.redirect("/paintings");
+     res.redirect("/home");
      
  
 });
