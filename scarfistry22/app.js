@@ -307,6 +307,48 @@ Order.find(function(err,docs){
 	});
 
 
+app.post("/addpaint/:id",function(req,res){
+
+
+	var productId=req.params.id;
+	 cart= new Cart(req.session.cart ? req.session.cart :{});
+
+	 	MongoClient.connect(uri, async function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("scarfistry");
+  let result = await dbo.collection("paintings").findOne({"_id": new ObjectId(productId)});
+   let x=[];
+   x.push(result);
+  
+    	cart.add(result,result.name," "," ");
+		req.session.cart=cart;
+     res.redirect("/home");
+     
+ 
+});
+
+// 	Painting.findById(productId,function(err,product){
+// 		if(err){
+// 			 return res.redirect("/check");
+// 		}
+// 		cart.add(product,product.name+"","","");
+
+// 		req.session.cart=cart;
+// 		console.log(req.session.cart.totalQty);
+// 		console.log(product.name);
+// 		Painting.find(function(err,docs){
+
+// 	res.redirect("/paintings");
+// 	});
+// // 		res.render('shirts.ejs', {
+// //     	layout:false,
+// //     	session: req.session
+// // });
+		
+// 	});
+	
+});
+
 	app.get("/scarves",function(req,res){
 		if(!req.session.cart){
 			totalQty=0;
