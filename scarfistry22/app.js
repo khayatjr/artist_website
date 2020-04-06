@@ -316,7 +316,7 @@ app.get("/admin",function(req,res,next){
 	});
 
 
-app.get("/addpaint/:id",function(req,res){
+app.post("/addpaint/:id",function(req,res){
 
 
 	var productId=req.params.id;
