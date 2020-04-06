@@ -316,7 +316,7 @@ app.get("/admin",function(req,res,next){
 	});
 
 
-app.post("/addpaint/:id",function(req,res){
+app.get("/addpaint/:id",function(req,res){
 
 
 	var productId=req.params.id;
@@ -329,7 +329,7 @@ app.post("/addpaint/:id",function(req,res){
    let x=[];
    x.push(result);
   
-    	cart.add(result,result.name," "," ");
+    	cart.add(result,result.name+"","","");
 		req.session.cart=cart;
      res.redirect("/paintings");
      
