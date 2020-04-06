@@ -479,7 +479,7 @@ app.post("/order",function(req,res,next){
 	 	MongoClient.connect(uri, async function(err, db) {
   if (err) throw err;
   var dbo = db.db("scarfistry");
-	await dbo.collection("orders").insertOne(order):
+	await dbo.collection("orders").insertOne(order);
   	req.flash('success','order placed successfully, you will be contacted soon ');
 		var mailOptions = {
   from:  'scarfistry@gmail.com',
