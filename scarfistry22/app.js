@@ -16,6 +16,7 @@ var mongodb=require("mongodb");
 var Order=require("./order")
 app.use(flash());
 app.use(express.static("public"));
+var ObjectId = require('mongodb').ObjectID;
 //app.use(express.static("/public"));
 
 
@@ -109,7 +110,7 @@ app.post("/size/:id", function (req, res) {
 	MongoClient.connect(uri, async function(err, db) {
   if (err) throw err;
   var dbo = db.db("scarfistry");
-  let result = await dbo.collection("products").findOne();
+  let result = await dbo.collection("products").findOne({"_id": new ObjectId(productId)});
    let x=[];
    x.push(result);
   
