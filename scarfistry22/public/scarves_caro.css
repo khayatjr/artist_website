@@ -220,22 +220,22 @@ html {
 .item-1 {
     z-index: 2;
     opacity: 1;
-  background:url('/c1.jpeg');
+  background:url('/c1.JPEG');
   background-size:cover;
   background-repeat: no-repeat;
   }
 .item-2{
-  background:url('/c2.jpeg');
+  background:url('/c2.JPEG');
    background-size:cover;
    background-repeat: no-repeat;
 }
 .item-3{
-  background:url('/c3.jpeg');
+  background:url('/c3.JPEG');
    background-size:cover;
    background-repeat: no-repeat;
 }
 .item-4{
-  background:url('/c4.jpg');
+  background:url('/c4.JPEG');
    background-size:cover;
    background-repeat: no-repeat;
 }
