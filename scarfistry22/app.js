@@ -307,7 +307,7 @@ Order.find(function(err,docs){
 	});
 
 
-app.post("/addpaint/:id",function(req,res){
+app.get("/addpaint/",function(req,res){
 
 
 	var productId=req.params.id;
