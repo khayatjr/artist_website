@@ -316,10 +316,10 @@ app.get("/admin",function(req,res,next){
 	});
 
 
-app.get("/addpaint/:id",function(req,res){
+app.get("/addpaint/:id",async function(req,res){
 
 
-	var productId=req.params.id;
+	var productId= await req.params.id;
 	 cart= new Cart(req.session.cart ? req.session.cart :{});
 
 	 	MongoClient.connect(uri, async function(err, db) {
@@ -328,9 +328,9 @@ app.get("/addpaint/:id",function(req,res){
   let result = await dbo.collection("paintings").findOne({"_id": new ObjectId(productId)});
  
   
-    	cart.add(result,result.name+"","","");
-		req.session.cart=cart;
-     res.redirect("/home");
+    await	cart.add(result,result.name+"","","");
+	await	req.session.cart=cart;
+     res.redirect("/paintings");
      
  
 });
