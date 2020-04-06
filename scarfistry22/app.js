@@ -306,7 +306,7 @@ Order.find(function(err,docs){
 
 	});
 
-app.get("/addpaint/:id",function(req,res){
+app.post("/addpaint/:id",function(req,res){
 
 
 	var productId=req.params.id;
@@ -326,7 +326,25 @@ app.get("/addpaint/:id",function(req,res){
  
 });
 
-	
+// 	Painting.findById(productId,function(err,product){
+// 		if(err){
+// 			 return res.redirect("/check");
+// 		}
+// 		cart.add(product,product.name+"","","");
+
+// 		req.session.cart=cart;
+// 		console.log(req.session.cart.totalQty);
+// 		console.log(product.name);
+// 		Painting.find(function(err,docs){
+
+// 	res.redirect("/paintings");
+// 	});
+// // 		res.render('shirts.ejs', {
+// //     	layout:false,
+// //     	session: req.session
+// // });
+		
+// 	});
 	
 });
 
