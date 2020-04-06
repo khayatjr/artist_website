@@ -267,10 +267,19 @@ res.redirect("/check");
 });
 
 app.get("/admin",function(req,res,next){
+	MongoClient.connect(uri, async function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("scarfistry");
+  let result = await dbo.collection("orders").find({}).toArray();
+ 
+  
+   
+     res.render("admin.ejs",{orders:result});
+     
 
-Order.find(function(err,docs){
-	res.render("admin.ejs",{orders:docs});
-	});
+});
+
+
  // res.render("checkout.ejs",{bag:cart.generateArray(),price:cart.totalPrice,size:arr});
 
 });
@@ -483,7 +492,7 @@ app.post("/order",function(req,res,next){
   	req.flash('success','order placed successfully, you will be contacted soon ');
 		var mailOptions = {
   from:  'scarfistry@gmail.com',
-  to: 'khayatove@yahoo.com',
+  to: 'mai_naga@hotmail.com',
   subject: 'New order',
   
   text: "check the new order" +"\n"+"\n"+
