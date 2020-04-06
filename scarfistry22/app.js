@@ -79,8 +79,8 @@ MongoClient.connect(uri, async function(err, db) {
   if (err) throw err;
   var dbo = db.db("scarfistry");
   let result = await dbo.collection("products").find();
-   let x=[];
-   x.push(result);
+   let x=result;
+   // x.push(result);
    
      res.render("shirts.ejs",{products:x,totalQty:totalQty});
      
