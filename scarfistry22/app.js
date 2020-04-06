@@ -326,12 +326,11 @@ app.get("/addpaint/:id",function(req,res){
   if (err) throw err;
   var dbo = db.db("scarfistry");
   let result = await dbo.collection("paintings").findOne({"_id": new ObjectId(productId)});
-   let x=[];
-   x.push(result);
+ 
   
-    	cart.add(result,result.name,"","");
+    	cart.add(result,result.name+"","","");
 		req.session.cart=cart;
-     res.redirect("/paintings");
+     res.redirect("/home");
      
  
 });
