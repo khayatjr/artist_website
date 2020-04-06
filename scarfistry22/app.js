@@ -78,13 +78,13 @@ app.get("/contact",function(req,res){
 MongoClient.connect(uri, async function(err, db) {
   if (err) throw err;
   var dbo = db.db("scarfistry");
-  let result = await dbo.collection("products").findOne();
+  let result = await dbo.collection("products").find();
    let x=[];
    x.push(result);
-   console.log(result.name);
+   
      res.render("shirts.ejs",{products:x,totalQty:totalQty});
      
- console.log(result.name);
+
 });
 		
 	
