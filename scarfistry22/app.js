@@ -307,7 +307,7 @@ Order.find(function(err,docs){
 	});
 
 
-app.get("/addpaint/",function(req,res){
+app.get("/addpaint/:id",function(req,res){
 
 
 	var productId=req.params.id;
@@ -322,7 +322,7 @@ app.get("/addpaint/",function(req,res){
   
     	cart.add(result,result.name," "," ");
 		req.session.cart=cart;
-     res.redirect("/home");
+     res.redirect("/paintings");
      
  
 });
