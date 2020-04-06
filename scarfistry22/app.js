@@ -525,7 +525,7 @@ app.get("/addpaint/:id",function(req,res){
    let x=[];
    x.push(result);
   
-    	cart.add(result,result.name,"","");
+    	cart.add(result,result.name," "," ");
 		req.session.cart=cart;
      res.redirect("/paintings");
      
