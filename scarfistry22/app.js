@@ -362,12 +362,18 @@ app.get("/addpaint/:id",function(req,res){
 	 
 	 // var docs2 = Species.find();
 	
-	
-	Scarves.find(function(err,doc){
-		 
+	MongoClient.connect(uri, async function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("scarfistry");
+  let result = await dbo.collection("scarves").find({}).toArray();
+ 
+  
+   
+     res.render("scarves.ejs",{scarves:result,totalQty:totalQty});
+     
 
-	res.render("scarves.ejs",{scarves:doc,totalQty:totalQty});
-	});
+});
+	
 	
 // async function run (res) {
 //   var resulting = await Scarves.find();
@@ -385,7 +391,28 @@ app.get("/addpaint/:id",function(req,res){
 	
 	});
 
+app.post("/addscarf/:id",function(req,res){
 
+
+	var productId=req.params.id;
+	 cart= new Cart(req.session.cart ? req.session.cart :{});
+	  	MongoClient.connect(uri, async function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("scarfistry");
+  let result = await dbo.collection("scarves").findOne({"_id": new ObjectId(productId)});
+   let x=[];
+   x.push(result);
+  
+    	cart.add(result,result.name," "," ");
+		req.session.cart=cart;
+     res.redirect("/scarves");
+     
+ 
+});
+
+
+	
+});
 
 
 app.get("/check",function(req,res,next){
@@ -523,32 +550,7 @@ transporter.sendMail(mailOptions, function(error, info){
 	
 
 });
-app.post("/addscarf/:id",function(req,res){
 
-
-	var productId=req.params.id;
-	 cart= new Cart(req.session.cart ? req.session.cart :{});
-
-	Scarves.findById(productId,function(err,product){
-		if(err){
-			 return res.redirect("/check");
-		}
-		cart.add(product,product.name+"","","");
-		req.session.cart=cart;
-		console.log(req.session.cart.totalQty);
-		console.log(product.name);
-		Scarves.find(function(err,docs){
-
-	res.redirect("/scarves");
-	});
-// 		res.render('shirts.ejs', {
-//     	layout:false,
-//     	session: req.session
-// });
-		
-	});
-	
-});
 
 
 
