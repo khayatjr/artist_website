@@ -329,7 +329,7 @@ app.get("/addpaint/:id",async function(req,res){
  
   
     await	cart.add(result,result.name+"","","");
-	await	req.session.cart=cart;
+		req.session.cart=cart;
      res.redirect("/paintings");
      
  
