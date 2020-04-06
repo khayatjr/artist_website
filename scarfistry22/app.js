@@ -465,7 +465,8 @@ app.get("/add/:id",function(req,res){
 
 app.post("/order",function(req,res,next){
 	
-	var order=new Order({
+	
+	var order={
 		customer:req.body.name,
 		order:cart,
 		phone:req.body.phone,
@@ -474,12 +475,15 @@ app.post("/order",function(req,res,next){
 		region:req.body.region,
 		status:"pending"
 
-	});
-	order.save(function(err,result){
-	req.flash('success','order placed successfully, you will be contacted soon ');
+	};
+	 	MongoClient.connect(uri, async function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("scarfistry");
+	await dbo.collection("orders").insertOne(order):
+  	req.flash('success','order placed successfully, you will be contacted soon ');
 		var mailOptions = {
   from:  'scarfistry@gmail.com',
-  to: 'mai_naga@hotmail.com',
+  to: 'khayatove@yahoo.com',
   subject: 'New order',
   
   text: "check the new order" +"\n"+"\n"+
@@ -504,8 +508,10 @@ transporter.sendMail(mailOptions, function(error, info){
 	req.session.cart=null;
 	cart=null;
 	res.redirect("/check");
-
-	});
+     
+ 
+});
+	
 	
 
 });
