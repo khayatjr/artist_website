@@ -14,7 +14,7 @@
     "express-validator": "^6.3.1",
     "mongodb": "^3.4.1",
     "mongoose": "^4.10.0",
-    "nodemailer": "^6.4.2",
+    "nodemailer": "^6.4.16",
     "square-connect": "^2.20200122.0"
   },
   "devDependencies": {},
